@@ -1,10 +1,14 @@
 package com.atguigu.tingshu.album.api;
 
-import com.atguigu.tingshu.album.config.MinioConstantProperties;
+import com.atguigu.tingshu.album.service.FileUploadService;
+import com.atguigu.tingshu.common.result.Result;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "上传管理接口")
 @RestController
@@ -12,7 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class FileUploadApiController {
 
     @Autowired
-    private MinioConstantProperties minioConstantProperties;
+    private FileUploadService fileUploadService;
+
+    @Operation(summary = "文件上传")
+    @PostMapping("/fileUpload")
+    public Result<String> fileUpload(MultipartFile file) {
+        //  文件上传
+        String url = fileUploadService.upload(file);
+        //  返回数据
+        return Result.ok(url);
+    }
 
 
 }
