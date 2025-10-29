@@ -13,6 +13,7 @@ import com.atguigu.tingshu.query.album.AlbumInfoQuery;
 import com.atguigu.tingshu.vo.album.AlbumAttributeValueVo;
 import com.atguigu.tingshu.vo.album.AlbumInfoVo;
 import com.atguigu.tingshu.vo.album.AlbumListVo;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -96,9 +97,38 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         this.saveAlbumStat(albumInfo.getId(), SystemConstant.ALBUM_STAT_COMMENT);
     }
 
+    /**
+     * 查询专辑列表
+     *
+     * @param albumInfoPage
+     * @param albumInfoQuery
+     * @return
+     */
     @Override
     public IPage<AlbumListVo> findUserAlbumPage(Page<AlbumListVo> albumInfoPage, AlbumInfoQuery albumInfoQuery) {
         return albumInfoMapper.selectUserAlbumPage(albumInfoPage, albumInfoQuery);
+    }
+
+    /**
+     * 删除专辑信息
+     *
+     * @param id
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void removeAlbumInfoById(Long id) {
+        // 删除专辑信息
+        this.removeById(id);
+        // 删除专辑属性值
+        albumAttributeValueMapper.delete(
+                new LambdaQueryWrapper<AlbumAttributeValue>()
+                        .eq(AlbumAttributeValue::getAlbumId, id)
+        );
+        // 删除专辑统计数据
+        albumStatMapper.delete(
+                new LambdaQueryWrapper<AlbumStat>()
+                        .eq(AlbumStat::getAlbumId, id)
+        );
     }
 
     /**

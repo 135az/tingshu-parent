@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -70,6 +71,19 @@ public class AlbumInfoApiController {
         IPage<AlbumListVo> iPage = this.albumInfoService.findUserAlbumPage(albumInfoPage, albumInfoQuery);
         //	返回数据集
         return Result.ok(iPage);
+    }
+
+    /**
+     * 根据专辑id删除专辑数据
+     *
+     * @param id
+     * @return
+     */
+    @Operation(summary = "删除专辑信息")
+    @DeleteMapping("removeAlbumInfo/{id}")
+    public Result removeAlbumInfoById(@PathVariable Long id) {
+        albumInfoService.removeAlbumInfoById(id);
+        return Result.ok();
     }
 
 
