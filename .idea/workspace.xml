@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumAttributeValueService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumAttributeValueServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/result/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/result/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/AuthContextHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/AuthContextHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/UploadFileUtil(1).java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/service-util/src/main/java/com/atguigu/tingshu/common/handler/GlobalExceptionHandler(1).java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/service-util/src/main/java/com/atguigu/tingshu/common/interceptor/FeignInterceptor(1).java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/model/album/BaseAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/model/album/BaseAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/config/MinioConstantProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/config/MinioConstantProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/BaseAttributeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/BaseAttributeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/BaseAttributeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/BaseAttributeMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +235,7 @@
       <workItem from="1761633820257" duration="8747000" />
       <workItem from="1761643579352" duration="83000" />
       <workItem from="1761643705131" duration="1431000" />
-      <workItem from="1761701280982" duration="1584000" />
+      <workItem from="1761701280982" duration="4249000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -269,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761634932139</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题">
+      <option name="closed" value="true" />
+      <created>1761703001081</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761703001081</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +281,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据" />
     <MESSAGE value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
+    <MESSAGE value="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
