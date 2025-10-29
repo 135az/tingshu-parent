@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
 <mapper namespace="com.atguigu.tingshu.album.mapper.TrackInfoMapper">
-
+    <select id="selectUserTrackPage" resultType="com.atguigu.tingshu.vo.album.TrackListVo">
+        select
+        track.album_id,
+        -- 专辑标题没有.
+        track.id track_id,
+        track.track_title,
+        track.cover_url,
+        track.media_duration,
+        track.status,
+        max(if(stat.stat_type = '0701',stat.stat_num,0)) as playStatNum,
+        max(if(stat.stat_type = '0702',stat.stat_num,0)) as collectStatNum,
+        max(if(stat.stat_type = '0703',stat.stat_num,0)) as praiseStatNum,
+        max(if(stat.stat_type = '0704',stat.stat_num,0)) as commentStatNum
+        from track_info track inner join track_stat stat on track.id = stat.track_id
+        <where>
+            <if test="vo.userId!=null">
+                track.user_id = #{vo.userId}
+            </if>
+            <if test="vo.status!=null and vo.status !=''">
+                and track.status = #{vo.status}
+            </if>
+            <if test="vo.trackTitle!=null and vo.trackTitle != ''">
+                and track.track_title like concat('%',#{vo.trackTitle},'%')
+            </if>
+            and track.is_deleted = 0
+        </where>
+        group by track.id
+        order by track.id desc
+    </select>
 </mapper>
 

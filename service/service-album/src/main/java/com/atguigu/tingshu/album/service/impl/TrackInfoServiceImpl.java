@@ -9,9 +9,13 @@ import com.atguigu.tingshu.common.constant.SystemConstant;
 import com.atguigu.tingshu.model.album.AlbumInfo;
 import com.atguigu.tingshu.model.album.TrackInfo;
 import com.atguigu.tingshu.model.album.TrackStat;
+import com.atguigu.tingshu.query.album.TrackInfoQuery;
 import com.atguigu.tingshu.vo.album.TrackInfoVo;
+import com.atguigu.tingshu.vo.album.TrackListVo;
 import com.atguigu.tingshu.vo.album.TrackMediaInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +81,19 @@ public class TrackInfoServiceImpl extends ServiceImpl<TrackInfoMapper, TrackInfo
         this.saveTrackStat(trackInfo.getId(), SystemConstant.TRACK_STAT_COLLECT);
         this.saveTrackStat(trackInfo.getId(), SystemConstant.TRACK_STAT_PRAISE);
         this.saveTrackStat(trackInfo.getId(), SystemConstant.TRACK_STAT_COMMENT);
+    }
+
+    /**
+     * 查询声音专辑列表
+     *
+     * @param trackListVoPage
+     * @param trackInfoQuery
+     * @return
+     */
+    @Override
+    public IPage<TrackListVo> findUserTrackPage(Page<TrackListVo> trackListVoPage, TrackInfoQuery trackInfoQuery) {
+        //	调用mapper层方法
+        return trackInfoMapper.selectUserTrackPage(trackListVoPage, trackInfoQuery);
     }
 
     /**
