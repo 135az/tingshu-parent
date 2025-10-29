@@ -26,4 +26,12 @@ public interface TrackInfoService extends IService<TrackInfo> {
      * @return
      */
     IPage<TrackListVo> findUserTrackPage(Page<TrackListVo> trackListVoPage, TrackInfoQuery trackInfoQuery);
+
+    /**
+     * 修改专辑信息
+     *
+     * @param id
+     * @param trackInfoVo
+     */
+    void updateTrackInfo(Long id, TrackInfoVo trackInfoVo);
 }

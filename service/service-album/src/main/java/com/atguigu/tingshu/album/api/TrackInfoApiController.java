@@ -4,6 +4,7 @@ import com.atguigu.tingshu.album.service.TrackInfoService;
 import com.atguigu.tingshu.album.service.VodService;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.common.util.AuthContextHolder;
+import com.atguigu.tingshu.model.album.TrackInfo;
 import com.atguigu.tingshu.query.album.TrackInfoQuery;
 import com.atguigu.tingshu.vo.album.TrackInfoVo;
 import com.atguigu.tingshu.vo.album.TrackListVo;
@@ -14,8 +15,10 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,6 +93,35 @@ public class TrackInfoApiController {
         IPage<TrackListVo> trackListVoIPage = trackInfoService.findUserTrackPage(trackListVoPage, trackInfoQuery);
         //	返回数据
         return Result.ok(trackListVoIPage);
+    }
+
+    /**
+     * 根据Id 获取数据
+     *
+     * @param id
+     * @return
+     */
+    @Operation(summary = "获取声音信息")
+    @GetMapping("getTrackInfo/{id}")
+    public Result<TrackInfo> getTrackInfo(@PathVariable Long id) {
+        //	调用服务层方法
+        TrackInfo trackInfo = trackInfoService.getById(id);
+        return Result.ok(trackInfo);
+    }
+
+    /**
+     * 保存修改声音数据
+     *
+     * @param id
+     * @param trackInfoVo
+     * @return
+     */
+    @Operation(summary = "修改声音")
+    @PutMapping("updateTrackInfo/{id}")
+    public Result updateById(@PathVariable Long id, @RequestBody @Validated TrackInfoVo trackInfoVo) {
+        //	调用服务层方法
+        trackInfoService.updateTrackInfo(id, trackInfoVo);
+        return Result.ok();
     }
 
 }
