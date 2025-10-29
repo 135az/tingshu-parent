@@ -5,6 +5,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Minio配置类
+ *
+ * @author yjz
+ */
 @Configuration
 @ConfigurationProperties(prefix = "minio") // 读取节点
 @RefreshScope

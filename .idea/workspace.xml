@@ -4,10 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
-      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/FileUploadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/FileUploadServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService(1).java" beforeDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumAttributeValueService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumAttributeValueServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/result/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/result/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/AuthContextHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/AuthContextHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-util/src/main/java/com/atguigu/tingshu/common/util/UploadFileUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/service-util/src/main/java/com/atguigu/tingshu/common/handler/GlobalExceptionHandler(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/service-util/src/main/java/com/atguigu/tingshu/common/interceptor/FeignInterceptor(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/model/album/BaseAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/model/album/BaseAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/config/MinioConstantProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/config/MinioConstantProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/BaseAttributeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/BaseAttributeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/BaseAttributeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/BaseAttributeMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,18 +48,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "135az"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;135az&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/135az/tingshu-parent.git",
-    "accountId": "82a259b0-5905-4836-9424-87c6f7e2a532"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/135az/tingshu-parent.git&quot;,
+    &quot;accountId&quot;: &quot;82a259b0-5905-4836-9424-87c6f7e2a532&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -55,10 +75,10 @@
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2YVafTG7hFwgtrkUKfSrfmxbjKl" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -68,29 +88,43 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/0628project/tingshu-parent",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "rearrange.code.on.save": "true",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ServerGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceAlbumApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/0628project/tingshu-parent&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.atguigu.tingshu.model.live" />
@@ -105,8 +139,20 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="ServerGatewayApplication" value="STOPPED" />
+              <entry key="ServiceAlbumApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ServiceAccountApplication">
+  <component name="RunManager" selected="Spring Boot.ServerGatewayApplication">
     <configuration name="ServerGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="server-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.tingshu.ServerGatewayApplication" />
@@ -202,7 +248,10 @@
       <option name="presentableId" value="Default" />
       <updated>1700613305971</updated>
       <workItem from="1700613307445" duration="321000" />
-      <workItem from="1761633820257" duration="861000" />
+      <workItem from="1761633820257" duration="8747000" />
+      <workItem from="1761643579352" duration="83000" />
+      <workItem from="1761643705131" duration="1431000" />
+      <workItem from="1761701280982" duration="1584000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -212,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761634574771</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑">
+      <option name="closed" value="true" />
+      <created>1761634932139</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1761634932139</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +288,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据" />
+    <MESSAGE value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
