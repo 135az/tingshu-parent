@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/VodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/VodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/VodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/VodServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,43 +69,43 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ServerGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ServiceAlbumApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/0628project/tingshu-parent&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ServerGatewayApplication.executor": "Run",
+    "Spring Boot.ServiceAlbumApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/0628project/tingshu-parent",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "rearrange.code.on.save": "true",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.atguigu.tingshu.model.live" />
@@ -232,7 +232,7 @@
       <workItem from="1761633820257" duration="8747000" />
       <workItem from="1761643579352" duration="83000" />
       <workItem from="1761643705131" duration="1431000" />
-      <workItem from="1761701280982" duration="9288000" />
+      <workItem from="1761701280982" duration="11043000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -282,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761708723145</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明">
+      <option name="closed" value="true" />
+      <created>1761717229196</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1761717229196</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,13 +308,16 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据" />
     <MESSAGE value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
     <MESSAGE value="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题" />
     <MESSAGE value="feat(album): 实现用户专辑分页查询功能&#10;&#10;- 新增根据条件查询专辑列表的API接口- 支持分页参数和查询对象传参- 实现专辑信息与统计数据的联合查询&#10;- 添加专辑播放量、订阅量等统计字段- 优化MyBatis XML映射文件SQL语句&#10;- 更新Mapper接口支持分页查询方法&#10;- 完善Service层专辑分页查询逻辑&#10;- 集成Swagger注解增强接口文档说明" />
     <MESSAGE value="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用" />
     <MESSAGE value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
+    <MESSAGE value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
