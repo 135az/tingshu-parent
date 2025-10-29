@@ -20,4 +20,12 @@ public interface TrackInfoMapper extends BaseMapper<TrackInfo> {
      * @return
      */
     IPage<TrackListVo> selectUserTrackPage(Page<TrackListVo> trackListVoPage, @Param("vo") TrackInfoQuery trackInfoQuery);
+
+    /**
+     * 修改声音序号
+     *
+     * @param albumId
+     * @param orderNum
+     */
+    void updateTrackNum(@Param("albumId") Long albumId, @Param("orderNum") Integer orderNum);
 }

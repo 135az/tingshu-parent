@@ -10,6 +10,8 @@ import com.qcloud.vod.model.VodUploadRequest;
 import com.qcloud.vod.model.VodUploadResponse;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.vod.v20180717.VodClient;
+import com.tencentcloudapi.vod.v20180717.models.DeleteMediaRequest;
+import com.tencentcloudapi.vod.v20180717.models.DeleteMediaResponse;
 import com.tencentcloudapi.vod.v20180717.models.DescribeMediaInfosRequest;
 import com.tencentcloudapi.vod.v20180717.models.DescribeMediaInfosResponse;
 import com.tencentcloudapi.vod.v20180717.models.MediaInfo;
@@ -30,6 +32,12 @@ public class VodServiceImpl implements VodService {
     @Autowired
     private VodConstantProperties vodConstantProperties;
 
+    /**
+     * 上传声音
+     *
+     * @param file
+     * @return
+     */
     @SneakyThrows
     @Override
     public Map<String, Object> uploadTrack(MultipartFile file) {
@@ -53,6 +61,12 @@ public class VodServiceImpl implements VodService {
         return map;
     }
 
+    /**
+     * 获取声音信息
+     *
+     * @param mediaFileId
+     * @return
+     */
     @SneakyThrows
     @Override
     public TrackMediaInfoVo getTrackMediaInfo(String mediaFileId) {
@@ -81,5 +95,25 @@ public class VodServiceImpl implements VodService {
             return trackMediaInfoVo;
         }
         return null;
+    }
+
+    /**
+     * 删除声音
+     *
+     * @param mediaFileId
+     */
+    @SneakyThrows
+    @Override
+    public void removeTrack(String mediaFileId) {
+        Credential cred = new Credential(vodConstantProperties.getSecretId(), vodConstantProperties.getSecretKey());
+        // 实例化要请求产品的client对象,clientProfile是可选的
+        VodClient client = new VodClient(cred, vodConstantProperties.getRegion());
+        // 实例化一个请求对象,每个接口都会对应一个request对象
+        DeleteMediaRequest req = new DeleteMediaRequest();
+        req.setFileId(mediaFileId);
+        // 返回的resp是一个DeleteMediaResponse的实例，与请求对象对应
+        DeleteMediaResponse response = client.DeleteMedia(req);
+        // 输出json格式的字符串回包
+        log.info("声音删除返回结课: {}", JSON.toJSONString(response));
     }
 }

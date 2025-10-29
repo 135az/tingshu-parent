@@ -34,5 +34,13 @@
         group by track.id
         order by track.id desc
     </select>
+    
+    <update id="updateTrackNum">
+        UPDATE track_info
+        SET order_num = order_num - 1
+        WHERE album_id = #{albumId}
+          AND order_num > #{orderNum}
+          AND is_deleted = 0
+    </update>
 </mapper>
 

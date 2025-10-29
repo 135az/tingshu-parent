@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -121,6 +122,20 @@ public class TrackInfoApiController {
     public Result updateById(@PathVariable Long id, @RequestBody @Validated TrackInfoVo trackInfoVo) {
         //	调用服务层方法
         trackInfoService.updateTrackInfo(id, trackInfoVo);
+        return Result.ok();
+    }
+
+    /**
+     * 删除声音
+     *
+     * @param id
+     * @return
+     */
+    @Operation(summary = "删除声音信息")
+    @DeleteMapping("removeTrackInfo/{id}")
+    public Result removeTrackInfo(@PathVariable Long id) {
+        //	调用服务层方法
+        trackInfoService.removeTrackInfo(id);
         return Result.ok();
     }
 

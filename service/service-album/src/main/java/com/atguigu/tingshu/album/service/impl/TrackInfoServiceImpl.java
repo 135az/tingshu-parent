@@ -132,6 +132,27 @@ public class TrackInfoServiceImpl extends ServiceImpl<TrackInfoMapper, TrackInfo
         this.updateById(trackInfo);
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void removeTrackInfo(Long id) {
+        // 获取声音对象数据
+        TrackInfo trackInfo = this.getById(id);
+        // 删除
+        this.removeById(id);
+        // 删除统计数据
+        trackStatMapper.delete(new LambdaQueryWrapper<TrackStat>().eq(TrackStat::getTrackId, id));
+        // 更新专辑声音总数
+        AlbumInfo albumInfo = this.albumInfoService.getById(trackInfo.getAlbumId());
+        int includeTrackCount = albumInfo.getIncludeTrackCount() - 1;
+        albumInfo.setIncludeTrackCount(includeTrackCount);
+        albumInfoService.updateById(albumInfo);
+        // 序号重新计算
+        trackInfoMapper.updateTrackNum(trackInfo.getAlbumId(), trackInfo.getOrderNum());
+
+        // 删除声音媒体
+        vodService.removeTrack(trackInfo.getMediaFileId());
+    }
+
     /**
      * 初始化统计数量
      *
