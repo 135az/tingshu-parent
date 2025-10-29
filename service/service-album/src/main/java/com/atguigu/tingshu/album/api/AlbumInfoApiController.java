@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author yjz
  */
@@ -116,6 +118,20 @@ public class AlbumInfoApiController {
         //	调用服务层方法
         albumInfoService.updateAlbumInfo(id, albumInfoVo);
         return Result.ok();
+    }
+
+    /**
+     * 获取当前用户专辑列表
+     *
+     * @return
+     */
+    @Operation(summary = "获取当前用户全部专辑列表")
+    @GetMapping("findUserAllAlbumList")
+    public Result findUserAllAlbumList() {
+        //	调用服务层方法
+        Long userId = AuthContextHolder.getUserId() == null ? 1L : AuthContextHolder.getUserId();
+        List<AlbumInfo> list = albumInfoService.findUserAllAlbumList(userId);
+        return Result.ok(list);
     }
 
 

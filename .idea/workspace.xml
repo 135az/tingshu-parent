@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
@@ -232,7 +232,7 @@
       <workItem from="1761633820257" duration="8747000" />
       <workItem from="1761643579352" duration="83000" />
       <workItem from="1761643705131" duration="1431000" />
-      <workItem from="1761701280982" duration="6836000" />
+      <workItem from="1761701280982" duration="9288000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -274,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761707782345</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性">
+      <option name="closed" value="true" />
+      <created>1761708723145</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761708723145</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +305,8 @@
     <MESSAGE value="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题" />
     <MESSAGE value="feat(album): 实现用户专辑分页查询功能&#10;&#10;- 新增根据条件查询专辑列表的API接口- 支持分页参数和查询对象传参- 实现专辑信息与统计数据的联合查询&#10;- 添加专辑播放量、订阅量等统计字段- 优化MyBatis XML映射文件SQL语句&#10;- 更新Mapper接口支持分页查询方法&#10;- 完善Service层专辑分页查询逻辑&#10;- 集成Swagger注解增强接口文档说明" />
     <MESSAGE value="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用" />
+    <MESSAGE value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

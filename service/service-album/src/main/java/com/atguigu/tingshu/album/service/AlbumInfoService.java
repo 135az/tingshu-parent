@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 public interface AlbumInfoService extends IService<AlbumInfo> {
 
     /**
@@ -49,4 +51,12 @@ public interface AlbumInfoService extends IService<AlbumInfo> {
      * @param albumInfoVo
      */
     void updateAlbumInfo(Long id, AlbumInfoVo albumInfoVo);
+
+    /**
+     * 查询用户所有专辑列表
+     *
+     * @param userId
+     * @return
+     */
+    List<AlbumInfo> findUserAllAlbumList(Long userId);
 }

@@ -188,6 +188,19 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         }
     }
 
+    @Override
+    public List<AlbumInfo> findUserAllAlbumList(Long userId) {
+        // 默认查看第一页
+        Page<AlbumInfo> albumInfoPage = new Page<>(1, 10);
+        // 设置查询条件
+        LambdaQueryWrapper<AlbumInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(AlbumInfo::getUserId, userId);
+        queryWrapper.select(AlbumInfo::getId, AlbumInfo::getAlbumTitle);
+        queryWrapper.orderByDesc(AlbumInfo::getId);
+        // 返回查询结果
+        return albumInfoMapper.selectPage(albumInfoPage, queryWrapper).getRecords();
+    }
+
     /**
      * 初始化统计数据
      *
