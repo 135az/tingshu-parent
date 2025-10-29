@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/RechargeInfoService(1).java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/VodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/VodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/VodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/VodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-live/src/main/java/com/atguigu/tingshu/live/util/WebSocketLocalContainerUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/mapper/PaymentInfoMapper(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-system/src/main/java/com/atguigu/tingshu/system/controller/SysOperLogController(1)(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-system/src/main/java/com/atguigu/tingshu/system/controller/SysOperLogController(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-system/src/main/java/com/atguigu/tingshu/system/service/SysMenuService(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-system/src/main/java/com/atguigu/tingshu/system/service/SysOperLogService(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/VipServiceConfigApiController(1).java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +81,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.server-gateway [install].executor": "Run",
+    "Maven.service-album [install].executor": "Run",
+    "Maven.tingshu-parent [clean].executor": "Run",
+    "Maven.tingshu-parent [install].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -78,6 +92,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ServerGatewayApplication.executor": "Run",
@@ -93,11 +108,11 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "rearrange.code.on.save": "true",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -125,7 +140,7 @@
         <entry key="SpringBootApplicationConfigurationType">
           <value>
             <map>
-              <entry key="ServerGatewayApplication" value="STOPPED" />
+              <entry key="ServerGatewayApplication" value="FAILED" />
               <entry key="ServiceAlbumApplication" value="STOPPED" />
             </map>
           </value>
@@ -232,7 +247,8 @@
       <workItem from="1761633820257" duration="8747000" />
       <workItem from="1761643579352" duration="83000" />
       <workItem from="1761643705131" duration="1431000" />
-      <workItem from="1761701280982" duration="11043000" />
+      <workItem from="1761701280982" duration="13162000" />
+      <workItem from="1761723628168" duration="905000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -290,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761717229196</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明">
+      <option name="closed" value="true" />
+      <created>1761720626211</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761720626211</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +341,8 @@
     <MESSAGE value="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用" />
     <MESSAGE value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
     <MESSAGE value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
+    <MESSAGE value="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
