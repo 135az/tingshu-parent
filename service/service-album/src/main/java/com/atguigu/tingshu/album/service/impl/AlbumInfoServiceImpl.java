@@ -132,6 +132,63 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
     }
 
     /**
+     * 根据Id查询专辑信息
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public AlbumInfo getAlbumInfoById(Long id) {
+        // 查询专辑信息
+        AlbumInfo albumInfo = this.getById(id);
+        // 获取专辑属性值
+        if (albumInfo != null) {
+            albumInfo.setAlbumAttributeValueVoList(
+                    albumAttributeValueMapper.selectList(
+                            new LambdaQueryWrapper<AlbumAttributeValue>()
+                                    .eq(AlbumAttributeValue::getAlbumId, id)
+                    )
+            );
+        }
+        return albumInfo;
+    }
+
+    /**
+     * 修改专辑信息
+     *
+     * @param id
+     * @param albumInfoVo
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateAlbumInfo(Long id, AlbumInfoVo albumInfoVo) {
+        AlbumInfo albumInfo = this.getById(id);
+        BeanUtils.copyProperties(albumInfoVo, albumInfo);
+        // 根据id 修改专辑信息
+        this.updateById(albumInfo);
+        // 先删除专辑属性值
+        albumAttributeValueMapper.delete(
+                new LambdaQueryWrapper<AlbumAttributeValue>()
+                        .eq(AlbumAttributeValue::getAlbumId, id)
+        );
+        // 添加专辑属性值
+        List<AlbumAttributeValueVo> albumAttributeValueVoList = albumInfoVo.getAlbumAttributeValueVoList();
+        if (!CollectionUtils.isEmpty(albumAttributeValueVoList)) {
+            // 循环遍历
+            List<AlbumAttributeValue> attributeValueList = albumAttributeValueVoList.stream()
+                    .map(albumAttributeValueVo -> {
+                        // 创建一个实体对象
+                        AlbumAttributeValue albumAttributeValue = new AlbumAttributeValue();
+                        BeanUtils.copyProperties(albumAttributeValueVo, albumAttributeValue);
+                        albumAttributeValue.setAlbumId(albumInfo.getId());
+                        return albumAttributeValue;
+                    }).collect(Collectors.toList());
+            // 批量插入
+            this.albumAttributeValueService.saveBatch(attributeValueList);
+        }
+    }
+
+    /**
      * 初始化统计数据
      *
      * @param albumId

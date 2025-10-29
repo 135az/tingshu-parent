@@ -3,6 +3,7 @@ package com.atguigu.tingshu.album.api;
 import com.atguigu.tingshu.album.service.AlbumInfoService;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.common.util.AuthContextHolder;
+import com.atguigu.tingshu.model.album.AlbumInfo;
 import com.atguigu.tingshu.query.album.AlbumInfoQuery;
 import com.atguigu.tingshu.vo.album.AlbumInfoVo;
 import com.atguigu.tingshu.vo.album.AlbumListVo;
@@ -14,8 +15,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -83,6 +86,35 @@ public class AlbumInfoApiController {
     @DeleteMapping("removeAlbumInfo/{id}")
     public Result removeAlbumInfoById(@PathVariable Long id) {
         albumInfoService.removeAlbumInfoById(id);
+        return Result.ok();
+    }
+
+    /**
+     * 根据id 获取到专辑信息
+     *
+     * @param id
+     * @return
+     */
+    @Operation(summary = "获取专辑信息")
+    @GetMapping("getAlbumInfo/{id}")
+    public Result<AlbumInfo> getAlbumInfoById(@PathVariable Long id) {
+        //	调用服务层方法
+        AlbumInfo albumInfo = albumInfoService.getAlbumInfoById(id);
+        return Result.ok(albumInfo);
+    }
+
+    /**
+     * 修改专辑信息
+     *
+     * @param id
+     * @param albumInfoVo
+     * @return
+     */
+    @Operation(summary = "修改专辑")
+    @PutMapping("/updateAlbumInfo/{id}")
+    public Result updateById(@PathVariable Long id, @RequestBody @Validated AlbumInfoVo albumInfoVo) {
+        //	调用服务层方法
+        albumInfoService.updateAlbumInfo(id, albumInfoVo);
         return Result.ok();
     }
 
