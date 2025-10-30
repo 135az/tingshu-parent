@@ -2,6 +2,8 @@ package com.atguigu.tingshu.common.util;
 
 /**
  * 获取当前用户信息帮助类
+ *
+ * @author yjz
  */
 public class AuthContextHolder {
 

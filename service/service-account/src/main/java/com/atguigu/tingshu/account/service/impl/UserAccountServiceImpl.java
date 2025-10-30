@@ -13,7 +13,18 @@ import org.springframework.stereotype.Service;
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserAccount> implements UserAccountService {
 
-	@Autowired
-	private UserAccountMapper userAccountMapper;
+    @Autowired
+    private UserAccountMapper userAccountMapper;
 
+    /**
+     * 添加用户账户
+     *
+     * @param userId
+     */
+    @Override
+    public void addUserAccount(Long userId) {
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUserId(userId);
+        userAccountMapper.insert(userAccount);
+    }
 }

@@ -5,11 +5,12 @@ import lombok.Getter;
 /**
  * 统一返回结果状态信息类
  *
+ * @author yjz
  */
 @Getter
 public enum ResultCodeEnum {
 
-    SUCCESS(200,"成功"),
+    SUCCESS(200, "成功"),
     FAIL(201, "失败"),
     SERVICE_ERROR(202, "服务异常"),
     DATA_ERROR(203, "数据异常"),
@@ -25,11 +26,11 @@ public enum ResultCodeEnum {
     ACCOUNT_ERROR(211, "账号不正确"),
     PASSWORD_ERROR(212, "密码不正确"),
     PHONE_CODE_ERROR(213, "手机验证码不正确"),
-    LOGIN_MOBLE_ERROR( 214, "账号不正确"),
-    ACCOUNT_STOP( 215, "账号已停用"),
-    NODE_ERROR( 216, "该节点下有子节点，不可以删除"),
+    LOGIN_MOBLE_ERROR(214, "账号不正确"),
+    ACCOUNT_STOP(215, "账号已停用"),
+    NODE_ERROR(216, "该节点下有子节点，不可以删除"),
 
-    VOD_FILE_ID_ERROR( 217, "声音媒体id不正确"),
+    VOD_FILE_ID_ERROR(217, "声音媒体id不正确"),
 
     XXL_JOB_ERROR(218, "调度操作失败"),
 
