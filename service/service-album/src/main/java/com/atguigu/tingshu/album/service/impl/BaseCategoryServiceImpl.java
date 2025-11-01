@@ -101,4 +101,9 @@ public class BaseCategoryServiceImpl extends ServiceImpl<BaseCategory1Mapper, Ba
         //	调用mapper层方法
         return baseAttributeMapper.selectBaseAttributeList(category1Id);
     }
+
+    @Override
+    public BaseCategoryView getCategoryViewByCategory3Id(Long category3Id) {
+        return baseCategoryViewMapper.selectById(category3Id);
+    }
 }

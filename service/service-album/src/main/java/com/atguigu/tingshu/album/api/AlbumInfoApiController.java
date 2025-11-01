@@ -3,6 +3,7 @@ package com.atguigu.tingshu.album.api;
 import com.atguigu.tingshu.album.service.AlbumInfoService;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.common.util.AuthContextHolder;
+import com.atguigu.tingshu.model.album.AlbumAttributeValue;
 import com.atguigu.tingshu.model.album.AlbumInfo;
 import com.atguigu.tingshu.query.album.AlbumInfoQuery;
 import com.atguigu.tingshu.vo.album.AlbumInfoVo;
@@ -132,6 +133,20 @@ public class AlbumInfoApiController {
         Long userId = AuthContextHolder.getUserId() == null ? 1L : AuthContextHolder.getUserId();
         List<AlbumInfo> list = albumInfoService.findUserAllAlbumList(userId);
         return Result.ok(list);
+    }
+
+    /**
+     * 根据专辑Id 获取到专辑属性列表
+     *
+     * @param albumId
+     * @return
+     */
+    @Operation(summary = "获取专辑属性值列表")
+    @GetMapping("findAlbumAttributeValue/{albumId}")
+    public Result<List<AlbumAttributeValue>> findAlbumAttributeValue(@PathVariable Long albumId) {
+        //	获取到专辑属性集合
+        List<AlbumAttributeValue> albumAttributeValueList = albumInfoService.findAlbumAttributeValueByAlbumId(albumId);
+        return Result.ok(albumAttributeValueList);
     }
 
 

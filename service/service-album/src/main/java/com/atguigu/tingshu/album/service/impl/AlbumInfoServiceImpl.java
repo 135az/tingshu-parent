@@ -201,6 +201,14 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         return albumInfoMapper.selectPage(albumInfoPage, queryWrapper).getRecords();
     }
 
+    @Override
+    public List<AlbumAttributeValue> findAlbumAttributeValueByAlbumId(Long albumId) {
+        return albumAttributeValueMapper.selectList(
+                new LambdaQueryWrapper<AlbumAttributeValue>()
+                        .eq(AlbumAttributeValue::getAlbumId, albumId)
+        );
+    }
+
     /**
      * 初始化统计数据
      *
