@@ -21,6 +21,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 
@@ -48,57 +49,85 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public void upperAlbum(Long albumId) {
-        //  获取专辑信息
-        Result<AlbumInfo> albumInfoResult = albumInfoFeignClient.getAlbumInfo(albumId);
-        AlbumInfo albumInfo = albumInfoResult.getData();
-        Assert.notNull(albumInfo, "专辑为空");
-        //  获取专辑属性信息
-        Result<List<AlbumAttributeValue>> albumAttributeValueResult = albumInfoFeignClient.findAlbumAttributeValue(albumId);
-        List<AlbumAttributeValue> albumAttributeValueList = albumAttributeValueResult.getData();
-        Assert.notNull(albumAttributeValueList, "专辑属性为空");
-        //  根据三级分类Id 获取到分类数据
-        Result<BaseCategoryView> baseCategoryViewResult = categoryFeignClient.getCategoryView(albumInfo.getCategory3Id());
-        BaseCategoryView baseCategoryView = baseCategoryViewResult.getData();
-        Assert.notNull(baseCategoryView, "分类为空");
-        //  根据用户Id 获取到用户信息
-        Result<UserInfoVo> userInfoVoResult = userInfoFeignClient.getUserInfoVo(albumInfo.getUserId());
-        UserInfoVo userInfoVo = userInfoVoResult.getData();
-        Assert.notNull(userInfoVo, "用户信息为空");
-
-        //  创建索引库对象
+        //  专辑上架时都应该给 AlbumInfoIndex
         AlbumInfoIndex albumInfoIndex = new AlbumInfoIndex();
-        BeanUtils.copyProperties(albumInfo, albumInfoIndex);
+        //  singleSave(albumId);
+        //  创建异步编排对象
+        CompletableFuture<AlbumInfo> albumInfoCompletableFuture = CompletableFuture.supplyAsync(() -> {
+            //  远程获取数据
+            Result<AlbumInfo> albumInfoResult = albumInfoFeignClient.getAlbumInfo(albumId);
+            //  判断
+            Assert.notNull(albumInfoResult, "albumInfoResult这个对象不为空");
+            AlbumInfo albumInfo = albumInfoResult.getData();
+            //  判断
+            Assert.notNull(albumInfo, "albumInfo 这个对象不为空");
+            //  给albumInfoIndex 对象中的专辑部分数据进行赋值.
+            BeanUtils.copyProperties(albumInfo, albumInfoIndex);
+            //  返回对象
+            return albumInfo;
+        });
 
-        //  赋值属性值信息
-        if (!CollectionUtils.isEmpty(albumAttributeValueList)) {
-            List<AttributeValueIndex> attributeValueIndexList = albumAttributeValueList.stream().map(albumAttributeValue -> {
-                AttributeValueIndex attributeValueIndex = new AttributeValueIndex();
-                BeanUtils.copyProperties(albumAttributeValue, attributeValueIndex);
-                return attributeValueIndex;
-            }).collect(Collectors.toList());
-            //  保存数据
-            albumInfoIndex.setAttributeValueIndexList(attributeValueIndexList);
-        }
-        //  赋值分类数据
-        albumInfoIndex.setCategory1Id(baseCategoryView.getCategory1Id());
-        albumInfoIndex.setCategory2Id(baseCategoryView.getCategory2Id());
-        albumInfoIndex.setCategory3Id(baseCategoryView.getCategory3Id());
-        //  赋值主播名称
-        albumInfoIndex.setAnnouncerName(userInfoVo.getNickname());
+        //  获取分类数据：需要使用三级分类Id  albumInfo.getCategory3Id();
+        CompletableFuture<Void> categoryCompletableFuture = albumInfoCompletableFuture.thenAcceptAsync(albumInfo -> {
+            Result<BaseCategoryView> categoryViewResult = categoryFeignClient.getCategoryView(albumInfo.getCategory3Id());
+            BaseCategoryView baseCategoryView = categoryViewResult.getData();
+            //  赋值：
+            albumInfoIndex.setCategory1Id(baseCategoryView.getCategory1Id());
+            albumInfoIndex.setCategory2Id(baseCategoryView.getCategory2Id());
+            albumInfoIndex.setCategory3Id(baseCategoryView.getCategory3Id());
+        });
 
-        // 更新统计量与得分，默认随机，方便测试
-        int num1 = new Random().nextInt(1000);
-        int num2 = new Random().nextInt(100);
-        int num3 = new Random().nextInt(50);
-        int num4 = new Random().nextInt(300);
-        albumInfoIndex.setPlayStatNum(num1);
-        albumInfoIndex.setSubscribeStatNum(num2);
-        albumInfoIndex.setBuyStatNum(num3);
-        albumInfoIndex.setCommentStatNum(num4);
-        double hotScore = num1 * 0.2 + num2 * 0.3 + num3 * 0.4 + num4 * 0.1;
-        //  设置热度排名
+        //  获取属性集合
+        CompletableFuture<Void> attributeCompletableFuture = CompletableFuture.runAsync(() -> {
+            //  获取专辑属性信息.
+            Result<List<AlbumAttributeValue>> albumAttributeValueResult = albumInfoFeignClient.findAlbumAttributeValue(albumId);
+            List<AlbumAttributeValue> albumAttributeValueList = albumAttributeValueResult.getData();
+            //  遍历数据
+            if (!CollectionUtils.isEmpty(albumAttributeValueList)) {
+                //  获取到当前albumAttributeValue 对象中的  attributeId  valueId 给  AttributeValueIndex 这个对象 赋值
+                List<AttributeValueIndex> attributeValueIndexList = albumAttributeValueList.stream()
+                        .map(albumAttributeValue -> {
+                            //  获取  attributeId  valueId 给  AttributeValueIndex 这个对象 赋值
+                            AttributeValueIndex attributeValueIndex = new AttributeValueIndex();
+                            attributeValueIndex.setAttributeId(albumAttributeValue.getAttributeId());
+                            attributeValueIndex.setValueId(albumAttributeValue.getValueId());
+                            return attributeValueIndex;
+                        }).collect(Collectors.toList());
+                //  赋值：
+                albumInfoIndex.setAttributeValueIndexList(attributeValueIndexList);
+            }
+        });
+
+        //  获取主播数据
+        CompletableFuture<Void> userCompletableFuture = albumInfoCompletableFuture.thenAcceptAsync(albumInfo -> {
+            //  赋值主播名称.album_info.user_id
+            Result<UserInfoVo> userInfoVoResult = userInfoFeignClient.getUserInfoVo(albumInfo.getUserId());
+            UserInfoVo userInfoVo = userInfoVoResult.getData();
+            //  赋值主播
+            albumInfoIndex.setAnnouncerName(userInfoVo.getNickname());
+        });
+
+        //  赋值播放量，，订阅量，购买量, 评论数
+        int playStatNum = new Random().nextInt(10000);
+        int subscribeStatNum = new Random().nextInt(100);
+        int buyStatNum = new Random().nextInt(1000);
+        int commentStatNum = new Random().nextInt(100);
+        albumInfoIndex.setPlayStatNum(playStatNum);
+        albumInfoIndex.setSubscribeStatNum(subscribeStatNum);
+        albumInfoIndex.setBuyStatNum(buyStatNum);
+        albumInfoIndex.setCommentStatNum(commentStatNum);
+
+        //  随机生成一个热度值。
+        double hotScore = new Random().nextInt(100);
         albumInfoIndex.setHotScore(hotScore);
-        //  保存商品上架信息
+
+        //  多任务组合：
+        CompletableFuture.allOf(
+                albumInfoCompletableFuture,
+                attributeCompletableFuture,
+                categoryCompletableFuture,
+                userCompletableFuture).join();
+        //  保存数据：
         albumIndexRepository.save(albumInfoIndex);
     }
 
