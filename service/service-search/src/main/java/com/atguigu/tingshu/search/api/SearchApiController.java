@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 @Tag(name = "搜索专辑管理")
 @RestController
@@ -82,6 +84,21 @@ public class SearchApiController {
         //  调用服务层方法.
         AlbumSearchResponseVo albumSearchResponseVo = searchService.search(albumIndexQuery);
         return Result.ok(albumSearchResponseVo);
+    }
+
+    /**
+     * 根据一级分类Id获取数据
+     *
+     * @param category1Id
+     * @return
+     */
+    @Operation(summary = "获取频道页数据")
+    @GetMapping("channel/{category1Id}")
+    public Result channel(@PathVariable Long category1Id) {
+
+        //  调用服务层方法
+        List<Map<String, Object>> mapList = searchService.channel(category1Id);
+        return Result.ok(mapList);
     }
 
 }

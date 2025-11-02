@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(search): 实现专辑搜索功能&#10;&#10;- 新增根据关键词检索专辑的接口&#10;- 支持分类筛选和属性筛选&#10;- 支持多种排序方式（综合、播放量、发布时间）- 实现高亮显示匹配关键词&#10;- 添加分页查询支持&#10;- 构建 Elasticsearch 查询 DSL 语句&#10;- 解析搜索结果并封装返回数据&#10;- 集成 Swagger 注解优化接口文档">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现根据一级分类ID查询全部分类信息接口&#10;&#10;- 新增根据一级分类ID获取完整分类树的API接口- 实现分类数据按层级结构组装逻辑&#10;- 支持返回包含二级和三级分类的嵌套JSON结构&#10;- 集成MyBatis Plus条件构造器优化查询性能&#10;- 使用Stream API对分类数据进行分组和映射处理- 添加Swagger注解完善接口文档- 补充对应的服务层方法和业务逻辑实现">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/CategoryFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/CategoryFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/CategoryDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/CategoryDegradeFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +258,7 @@
       <workItem from="1761701280982" duration="13162000" />
       <workItem from="1761723628168" duration="13627000" />
       <workItem from="1761793024761" duration="15000" />
-      <workItem from="1761975928024" duration="16383000" />
+      <workItem from="1761975928024" duration="19974000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -391,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762067762639</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat(album): 实现根据一级分类ID查询全部分类信息接口&#10;&#10;- 新增根据一级分类ID获取完整分类树的API接口- 实现分类数据按层级结构组装逻辑&#10;- 支持返回包含二级和三级分类的嵌套JSON结构&#10;- 集成MyBatis Plus条件构造器优化查询性能&#10;- 使用Stream API对分类数据进行分组和映射处理- 添加Swagger注解完善接口文档- 补充对应的服务层方法和业务逻辑实现">
+      <option name="closed" value="true" />
+      <created>1762069341416</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1762069341416</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +441,8 @@
     <MESSAGE value="feat(search):优化专辑上架异步处理逻辑- 使用CompletableFuture异步编排获取专辑信息&#10;- 并行处理分类、属性及用户数据的远程调用-优化热度值计算逻辑，使用固定范围随机数- 调整播放量、订阅量等统计字段的生成策略&#10;- 完善多任务组合等待与索引数据保存流程" />
     <MESSAGE value="feat(album): 实现专辑上下架消息通知机制&#10;&#10;- 在专辑服务中引入 Kafka 服务支持- 专辑上架时发送 Kafka 上架消息- 专辑下架时发送 Kafka 下架消息- 新增 SearchReceiver 监听上下架消息并同步搜索服务&#10;- 实现批量上架接口用于触发专辑上架操作" />
     <MESSAGE value="feat(search): 实现专辑搜索功能&#10;&#10;- 新增根据关键词检索专辑的接口&#10;- 支持分类筛选和属性筛选&#10;- 支持多种排序方式（综合、播放量、发布时间）- 实现高亮显示匹配关键词&#10;- 添加分页查询支持&#10;- 构建 Elasticsearch 查询 DSL 语句&#10;- 解析搜索结果并封装返回数据&#10;- 集成 Swagger 注解优化接口文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(search): 实现专辑搜索功能&#10;&#10;- 新增根据关键词检索专辑的接口&#10;- 支持分类筛选和属性筛选&#10;- 支持多种排序方式（综合、播放量、发布时间）- 实现高亮显示匹配关键词&#10;- 添加分页查询支持&#10;- 构建 Elasticsearch 查询 DSL 语句&#10;- 解析搜索结果并封装返回数据&#10;- 集成 Swagger 注解优化接口文档" />
+    <MESSAGE value="feat(album): 实现根据一级分类ID查询全部分类信息接口&#10;&#10;- 新增根据一级分类ID获取完整分类树的API接口- 实现分类数据按层级结构组装逻辑&#10;- 支持返回包含二级和三级分类的嵌套JSON结构&#10;- 集成MyBatis Plus条件构造器优化查询性能&#10;- 使用Stream API对分类数据进行分组和映射处理- 添加Swagger注解完善接口文档- 补充对应的服务层方法和业务逻辑实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现根据一级分类ID查询全部分类信息接口&#10;&#10;- 新增根据一级分类ID获取完整分类树的API接口- 实现分类数据按层级结构组装逻辑&#10;- 支持返回包含二级和三级分类的嵌套JSON结构&#10;- 集成MyBatis Plus条件构造器优化查询性能&#10;- 使用Stream API对分类数据进行分组和映射处理- 添加Swagger注解完善接口文档- 补充对应的服务层方法和业务逻辑实现" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

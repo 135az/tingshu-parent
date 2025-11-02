@@ -1,18 +1,23 @@
 package com.atguigu.tingshu.search.service.impl;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.FieldValue;
 import co.elastic.clients.elasticsearch._types.SortOrder;
+import co.elastic.clients.elasticsearch._types.aggregations.Aggregate;
 import co.elastic.clients.elasticsearch._types.query_dsl.BoolQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.NestedQuery;
+import co.elastic.clients.elasticsearch._types.query_dsl.TermsQueryField;
 import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.Hit;
 import co.elastic.clients.elasticsearch.core.search.HitsMetadata;
+import com.alibaba.fastjson.JSON;
 import com.atguigu.tingshu.album.client.AlbumInfoFeignClient;
 import com.atguigu.tingshu.album.client.CategoryFeignClient;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.model.album.AlbumAttributeValue;
 import com.atguigu.tingshu.model.album.AlbumInfo;
+import com.atguigu.tingshu.model.album.BaseCategory3;
 import com.atguigu.tingshu.model.album.BaseCategoryView;
 import com.atguigu.tingshu.model.search.AlbumInfoIndex;
 import com.atguigu.tingshu.model.search.AttributeValueIndex;
@@ -32,7 +37,10 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -187,6 +195,75 @@ public class SearchServiceImpl implements SearchService {
         long totalPages = (responseVO.getTotal() + albumIndexQuery.getPageSize() - 1) / albumIndexQuery.getPageSize();
         responseVO.setTotalPages(totalPages);
         return responseVO;
+    }
+
+    /**
+     * 根据一级分类Id 获取置顶数据
+     *
+     * @param category1Id
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> channel(Long category1Id) {
+        //  根据一级分类Id 获取到置顶数据集合
+        Result<List<BaseCategory3>> baseCategory3ListResult = categoryFeignClient.findTopBaseCategory3(category1Id);
+        //  获取数据
+        List<BaseCategory3> baseCategory3List = baseCategory3ListResult.getData();
+        //  建立对应关系 key = 三级分类Id value = 三级分类对象
+        Map<Long, BaseCategory3> category3IdToMap = baseCategory3List.stream().collect(Collectors.toMap(BaseCategory3::getId, baseCategory3 -> baseCategory3));
+        //  获取到三级分类Id 集合
+        List<Long> idList = baseCategory3List.stream().map(BaseCategory3::getId).collect(Collectors.toList());
+        //  将这个idList进行转换
+        List<FieldValue> valueList = idList.stream().map(id -> FieldValue.of(id)).collect(Collectors.toList());
+        //  调用查询方法:
+        SearchRequest.Builder request = new SearchRequest.Builder();
+        request.index("albuminfo").query(q -> q.terms(
+                f -> f.field("category3Id")
+                        .terms(new TermsQueryField.Builder().value(valueList).build())));
+        request.aggregations("groupByCategory3IdAgg",
+                a -> a.terms(t -> t.field("category3Id"))
+                        .aggregations("topTenHotScoreAgg",
+                                a1 -> a1.topHits(s -> s.size(6)
+                                        .sort(sort -> sort.field(
+                                                f -> f.field("hotScore").order(SortOrder.Desc))))));
+        //  获取到查询结果集
+        SearchResponse<AlbumInfoIndex> searchResponse = null;
+        try {
+            searchResponse = elasticsearchClient.search(request.build(), AlbumInfoIndex.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //  声明集合
+        List<Map<String, Object>> result = new ArrayList<>();
+        //  从聚合中获取数据
+        Aggregate groupByCategory3IdAgg = searchResponse.aggregations().get("groupByCategory3IdAgg");
+        groupByCategory3IdAgg.lterms().buckets().array().forEach(item -> {
+            //  创建集合数据
+            List<AlbumInfoIndex> albumInfoIndexList = new ArrayList<>();
+            //  获取三级分类Id 对象
+            long category3Id = item.key();
+            //  获取要置顶的集合数据
+            Aggregate topTenHotScoreAgg = item.aggregations().get("topTenHotScoreAgg");
+            //  循环遍历获取聚合中的数据
+            topTenHotScoreAgg.topHits().hits().hits().forEach(hit -> {
+                //  获取到source 的json 字符串数据
+                String json = hit.source().toString();
+                //  将json 字符串转换为AlbumInfoIndex 对象
+                AlbumInfoIndex albumInfoIndex = JSON.parseObject(json, AlbumInfoIndex.class);
+                //  将对象添加到集合中
+                albumInfoIndexList.add(albumInfoIndex);
+            });
+            //  声明一个map 集合数据
+            Map<String, Object> map = new HashMap<>();
+            //  存储根据三级分类Id要找到的三级分类
+            map.put("baseCategory3", category3IdToMap.get(category3Id));
+            //  存储所有的专辑集合数据
+            map.put("list", albumInfoIndexList);
+            //  将map 添加到集合中
+            result.add(map);
+        });
+        //  返回数据
+        return result;
     }
 
     /**
