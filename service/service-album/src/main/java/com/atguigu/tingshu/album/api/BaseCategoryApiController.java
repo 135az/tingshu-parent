@@ -60,5 +60,18 @@ public class BaseCategoryApiController {
         return Result.ok(baseCategoryView);
     }
 
+    /**
+     * 根据一级分类Id 获取全部数据
+     *
+     * @param category1Id
+     * @return
+     */
+    @Operation(summary = "根据一级分类id获取全部分类信息")
+    @GetMapping("getBaseCategoryList/{category1Id}")
+    public Result<JSONObject> getBaseCategoryList(@PathVariable Long category1Id) {
+        JSONObject jsonObject = baseCategoryService.getAllCategoryList(category1Id);
+        return Result.ok(jsonObject);
+    }
+
 }
 

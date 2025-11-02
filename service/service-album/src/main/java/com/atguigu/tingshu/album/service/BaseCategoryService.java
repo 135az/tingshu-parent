@@ -32,4 +32,12 @@ public interface BaseCategoryService extends IService<BaseCategory1> {
      * @return
      */
     BaseCategoryView getCategoryViewByCategory3Id(Long category3Id);
+
+    /**
+     * 根据一级分类Id 获取数据
+     *
+     * @param category1Id
+     * @return
+     */
+    JSONObject getAllCategoryList(Long category1Id);
 }

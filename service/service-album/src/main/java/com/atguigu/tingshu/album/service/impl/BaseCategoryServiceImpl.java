@@ -10,6 +10,7 @@ import com.atguigu.tingshu.album.service.BaseCategoryService;
 import com.atguigu.tingshu.model.album.BaseAttribute;
 import com.atguigu.tingshu.model.album.BaseCategory1;
 import com.atguigu.tingshu.model.album.BaseCategoryView;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -105,5 +106,57 @@ public class BaseCategoryServiceImpl extends ServiceImpl<BaseCategory1Mapper, Ba
     @Override
     public BaseCategoryView getCategoryViewByCategory3Id(Long category3Id) {
         return baseCategoryViewMapper.selectById(category3Id);
+    }
+
+    /**
+     * 根据一级分类Id 获取数据
+     *
+     * @param category1Id
+     * @return
+     */
+    @Override
+    public JSONObject getAllCategoryList(Long category1Id) {
+        BaseCategory1 baseCategory1 = baseCategory1Mapper.selectById(category1Id);
+        // 声明一级分类对象
+        JSONObject category1 = new JSONObject();
+        category1.put("categoryId", category1Id);
+        category1.put("categoryName", baseCategory1.getName());
+
+        // 获取全部分类信息
+        List<BaseCategoryView> baseCategoryViewList = baseCategoryViewMapper.selectList(
+                new LambdaQueryWrapper<BaseCategoryView>()
+                        .eq(BaseCategoryView::getCategory1Id, category1Id)
+        );
+
+        // 根据二级分类ID分组转换数据
+        Map<Long, List<BaseCategoryView>> category2Map = baseCategoryViewList.stream()
+                .collect(Collectors.groupingBy(BaseCategoryView::getCategory2Id));
+        List<JSONObject> category2Child = new ArrayList<>();
+        for (Map.Entry<Long, List<BaseCategoryView>> entry2 : category2Map.entrySet()) {
+            // 二级分类ID
+            Long category2Id = entry2.getKey();
+            // 二级分类对应的全部数据（三级数据）
+            List<BaseCategoryView> category3List = entry2.getValue();
+
+            // 声明二级分类对象
+            JSONObject category2 = new JSONObject();
+            category2.put("categoryId", category2Id);
+            category2.put("categoryName", category3List.get(0).getCategory2Name());
+
+            // 循环三级分类数据
+            List<JSONObject> category3Child = new ArrayList<>();
+            category3List.forEach(category3View -> {
+                JSONObject category3 = new JSONObject();
+                category3.put("categoryId", category3View.getCategory3Id());
+                category3.put("categoryName", category3View.getCategory3Name());
+                category3Child.add(category3);
+            });
+            category2Child.add(category2);
+            // 将三级数据放入二级里面
+            category2.put("categoryChild", category3Child);
+        }
+        // 将二级数据放入一级里面
+        category1.put("categoryChild", category2Child);
+        return category1;
     }
 }
