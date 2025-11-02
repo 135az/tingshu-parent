@@ -101,5 +101,20 @@ public class SearchApiController {
         return Result.ok(mapList);
     }
 
+    /**
+     * 自动补全功能
+     *
+     * @param keyword
+     * @return
+     */
+    @Operation(summary = "关键字自动补全")
+    @GetMapping("completeSuggest/{keyword}")
+    public Result completeSuggest(@PathVariable String keyword) {
+        //  根据关键词查询补全
+        List<String> list = searchService.completeSuggest(keyword);
+        //  返回数据
+        return Result.ok(list);
+    }
+
 }
 

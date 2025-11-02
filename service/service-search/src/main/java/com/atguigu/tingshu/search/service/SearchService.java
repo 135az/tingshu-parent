@@ -37,4 +37,12 @@ public interface SearchService {
      * @return
      */
     List<Map<String, Object>> channel(Long category1Id);
+
+    /**
+     * 根据关键字自动补全功能
+     *
+     * @param keyword
+     * @return
+     */
+    List<String> completeSuggest(String keyword);
 }
