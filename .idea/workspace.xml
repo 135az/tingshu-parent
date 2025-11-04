@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 新增专辑与声音统计更新功能&#10;- 在AlbumInfoMapper中添加updateStat方法，用于更新专辑统计数据&#10;- 在TrackInfoMapper中添加updateStat方法，用于更新声音统计数据&#10;- 实现AlbumInfoService和TrackInfoService中的updateStat接口&#10;- 在TrackInfoServiceImpl中实现统计更新逻辑，同时更新声音和专辑的播放量&#10;- 新增TrackReceiver监听器，处理Kafka消息更新统计信息&#10;- 在UserListenProcessApiController中增加updateListenProcess接口，用于更新用户播放进度&#10;- 扩展UserListenProcessService及其实现类，实现播放进度的保存与播放量统计逻辑&#10;- 集成Redis位图功能防止重复统计播放&#10;- 使用Kafka发送播放量更新消息，确保统计一致性">
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/CategoryFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/CategoryFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/CategoryDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/CategoryDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/BaseCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(search): 实现专辑排行榜功能&#10;&#10;- 新增获取所有一级分类接口 findAllCategory1&#10;- 实现排行榜数据更新方法 updateLatelyAlbumRanking&#10;- 添加根据分类和维度查询排行榜接口 findRankingList&#10;- 集成 Redis 存储排行榜数据&#10;- 支持热度、播放量、订阅量等多维度排行&#10;- 完善 Feign 客户端与降级处理&#10;- 优化 Swagger 接口文档参数说明">
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserListenProcessApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserListenProcessApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserListenProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserListenProcessService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserListenProcessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserListenProcessServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +267,7 @@
       <workItem from="1761793024761" duration="15000" />
       <workItem from="1761975928024" duration="23611000" />
       <workItem from="1762086900835" duration="7000" />
-      <workItem from="1762223966518" duration="12978000" />
+      <workItem from="1762223966518" duration="15105000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -474,7 +469,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762245389140</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="feat(search): 实现专辑排行榜功能&#10;&#10;- 新增获取所有一级分类接口 findAllCategory1&#10;- 实现排行榜数据更新方法 updateLatelyAlbumRanking&#10;- 添加根据分类和维度查询排行榜接口 findRankingList&#10;- 集成 Redis 存储排行榜数据&#10;- 支持热度、播放量、订阅量等多维度排行&#10;- 完善 Feign 客户端与降级处理&#10;- 优化 Swagger 接口文档参数说明">
+      <option name="closed" value="true" />
+      <created>1762247801884</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1762247801884</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +497,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据" />
     <MESSAGE value="feat(album): 实现文件上传功能&#10;&#10;- 新增文件上传接口/fileUpload&#10;- 创建FileUploadService接口及实现类&#10;- 集成MinIO客户端实现文件存储&#10;- 支持自动生成唯一文件名和返回访问URL&#10;- 添加MinioConstantProperties配置类支持动态刷新- 优化异常处理和文件流上传逻辑" />
     <MESSAGE value="feat(album): 实现专辑新增与分类属性查询功能&#10;&#10;- 新增专辑信息保存接口/saveAlbumInfo&#10;- 实现专辑属性值批量插入逻辑&#10;- 初始化专辑统计信息（播放量、订阅量等）&#10;- 添加根据一级分类ID查询属性及属性值的功能&#10;- 优化认证上下文工具类线程局部变量声明&#10;- 更新Nacos配置中心地址为192.168.200.130&#10;- 完善BaseAttribute实体类及相关Mapper配置&#10;- 调整Result通用返回类空值判断逻辑- 移除冗余的全局异常处理和Feign拦截器文件&#10;- 修复MyBatis XML映射文件DTD引用路径问题" />
     <MESSAGE value="feat(album): 实现用户专辑分页查询功能&#10;&#10;- 新增根据条件查询专辑列表的API接口- 支持分页参数和查询对象传参- 实现专辑信息与统计数据的联合查询&#10;- 添加专辑播放量、订阅量等统计字段- 优化MyBatis XML映射文件SQL语句&#10;- 更新Mapper接口支持分页查询方法&#10;- 完善Service层专辑分页查询逻辑&#10;- 集成Swagger注解增强接口文档说明" />
@@ -519,7 +521,8 @@
     <MESSAGE value="feat(album): 实现专辑声音列表分页查询功能&#10;- 在TrackInfoApiController中新增findAlbumTrackPage接口，支持根据专辑ID分页获取声音列表&#10;- 扩展TrackInfoMapper接口与XML映射文件，添加selectAlbumTrackPage方法实现声音列表查询逻辑&#10;- 在TrackInfoService中定义并实现findAlbumTrackPage服务方法，处理声音列表分页与付费标识逻辑&#10;- 新增AlbumTrackListVo实体类用于封装声音列表返回数据-优化用户权限校验逻辑，支持未登录状态下展示付费标识&#10;- 增加对试听集数的特殊处理，确保免费声音不显示付费标识&#10;- 完善VIP用户和已购声音用户的付费标识判断逻辑&#10;- 在UserInfoApiController中新增userIsPaidTrack接口，用于判断用户是否购买指定声音&#10;- 扩展UserInfoFeignClient及其降级类，支持远程调用用户付费状态查询&#10;- 在UserInfoService中实现userIsPaidTrack方法，完成用户付费状态的业务逻辑处理" />
     <MESSAGE value="feat增用户声音(user): 新播放进度查询接口&#10;&#10;- 在UserListenProcessApiController中添加getTrackBreakSecond接口，支持根据声音ID查询用户上次播放跳出时间- 扩展UserListenProcessService接口及其实现类，新增getTrackBreakSecond方法从MongoDB中获取播放进度&#10;- 集成MongoUtil工具类动态获取用户播放进度集合名称&#10;- 使用BigDecimal类型精确表示播放时间秒数&#10;- 添加@GuiGuLogin注解实现用户身份认证拦截&#10;- 集成Swagger注信息解完善接口文档&#10;- 优化MongoDB查询逻辑，支持按用户ID和声音ID联合查询播放记录" />
     <MESSAGE value="feat(album): 新增专辑与声音统计更新功能&#10;- 在AlbumInfoMapper中添加updateStat方法，用于更新专辑统计数据&#10;- 在TrackInfoMapper中添加updateStat方法，用于更新声音统计数据&#10;- 实现AlbumInfoService和TrackInfoService中的updateStat接口&#10;- 在TrackInfoServiceImpl中实现统计更新逻辑，同时更新声音和专辑的播放量&#10;- 新增TrackReceiver监听器，处理Kafka消息更新统计信息&#10;- 在UserListenProcessApiController中增加updateListenProcess接口，用于更新用户播放进度&#10;- 扩展UserListenProcessService及其实现类，实现播放进度的保存与播放量统计逻辑&#10;- 集成Redis位图功能防止重复统计播放&#10;- 使用Kafka发送播放量更新消息，确保统计一致性" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 新增专辑与声音统计更新功能&#10;- 在AlbumInfoMapper中添加updateStat方法，用于更新专辑统计数据&#10;- 在TrackInfoMapper中添加updateStat方法，用于更新声音统计数据&#10;- 实现AlbumInfoService和TrackInfoService中的updateStat接口&#10;- 在TrackInfoServiceImpl中实现统计更新逻辑，同时更新声音和专辑的播放量&#10;- 新增TrackReceiver监听器，处理Kafka消息更新统计信息&#10;- 在UserListenProcessApiController中增加updateListenProcess接口，用于更新用户播放进度&#10;- 扩展UserListenProcessService及其实现类，实现播放进度的保存与播放量统计逻辑&#10;- 集成Redis位图功能防止重复统计播放&#10;- 使用Kafka发送播放量更新消息，确保统计一致性" />
+    <MESSAGE value="feat(search): 实现专辑排行榜功能&#10;&#10;- 新增获取所有一级分类接口 findAllCategory1&#10;- 实现排行榜数据更新方法 updateLatelyAlbumRanking&#10;- 添加根据分类和维度查询排行榜接口 findRankingList&#10;- 集成 Redis 存储排行榜数据&#10;- 支持热度、播放量、订阅量等多维度排行&#10;- 完善 Feign 客户端与降级处理&#10;- 优化 Swagger 接口文档参数说明" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(search): 实现专辑排行榜功能&#10;&#10;- 新增获取所有一级分类接口 findAllCategory1&#10;- 实现排行榜数据更新方法 updateLatelyAlbumRanking&#10;- 添加根据分类和维度查询排行榜接口 findRankingList&#10;- 集成 Redis 存储排行榜数据&#10;- 支持热度、播放量、订阅量等多维度排行&#10;- 完善 Feign 客户端与降级处理&#10;- 优化 Swagger 接口文档参数说明" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
