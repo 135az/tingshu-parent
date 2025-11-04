@@ -15,6 +15,7 @@ import com.atguigu.tingshu.query.album.AlbumInfoQuery;
 import com.atguigu.tingshu.vo.album.AlbumAttributeValueVo;
 import com.atguigu.tingshu.vo.album.AlbumInfoVo;
 import com.atguigu.tingshu.vo.album.AlbumListVo;
+import com.atguigu.tingshu.vo.album.AlbumStatVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -225,6 +226,11 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
                 new LambdaQueryWrapper<AlbumAttributeValue>()
                         .eq(AlbumAttributeValue::getAlbumId, albumId)
         );
+    }
+
+    @Override
+    public AlbumStatVo getAlbumStatVoByAlbumId(Long albumId) {
+        return albumInfoMapper.selectAlbumStat(albumId);
     }
 
     /**

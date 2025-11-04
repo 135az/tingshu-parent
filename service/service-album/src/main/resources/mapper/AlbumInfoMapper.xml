@@ -45,5 +45,18 @@
         group by info.albumId
     </select>
 
+    <select id="selectAlbumStat" resultType="com.atguigu.tingshu.vo.album.AlbumStatVo">
+        select MAX(IF(info.statType = '0401', info.statNum, 0)) as playStatNum,
+               MAX(IF(info.statType = '0402', info.statNum, 0)) as subscribeStatNum,
+               MAX(IF(info.statType = '0403', info.statNum, 0)) as buyStatNum,
+               MAX(IF(info.statType = '0404', info.statNum, 0)) as commentStatNum
+        from (select stat.album_id  as albumId,
+                     stat.stat_type as statType,
+                     stat.stat_num  as statNum
+              from album_stat stat
+              where album_id = #{albumId}) info
+        group by info.albumId
+    </select>
+
 </mapper>
 
