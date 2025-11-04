@@ -77,4 +77,13 @@ public interface AlbumInfoService extends IService<AlbumInfo> {
      * @return
      */
     AlbumStatVo getAlbumStatVoByAlbumId(Long albumId);
+
+    /**
+     * 更新专辑统计信息
+     *
+     * @param albumId
+     * @param statType
+     * @param count
+     */
+    void updateStat(Long albumId, String statType, Integer count);
 }

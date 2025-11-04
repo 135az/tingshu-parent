@@ -38,4 +38,13 @@ public interface TrackInfoMapper extends BaseMapper<TrackInfo> {
      * @return
      */
     IPage<AlbumTrackListVo> selectAlbumTrackPage(Page<AlbumTrackListVo> pageParam, @Param("albumId") Long albumId);
+
+    /**
+     * 更新评论数据
+     *
+     * @param trackId
+     * @param statType
+     * @param count
+     */
+    void updateStat(@Param("trackId") Long trackId, @Param("statType") String statType, @Param("count") Integer count);
 }

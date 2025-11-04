@@ -29,4 +29,13 @@ public interface AlbumInfoMapper extends BaseMapper<AlbumInfo> {
      * @return
      */
     AlbumStatVo selectAlbumStat(@Param("albumId") Long albumId);
+
+    /**
+     * 更新专辑统计数据
+     *
+     * @param albumId
+     * @param statType
+     * @param count
+     */
+    void updateStat(@Param("albumId") Long albumId, @Param("statType") String statType, @Param("count") Integer count);
 }

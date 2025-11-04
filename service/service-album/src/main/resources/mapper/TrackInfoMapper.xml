@@ -67,5 +67,12 @@
           AND order_num > #{orderNum}
           AND is_deleted = 0
     </update>
+
+    <update id="updateStat">
+        update track_stat
+        set stat_num = stat_num + #{count}
+        where track_id = #{trackId}
+          and stat_type = #{statType}
+    </update>
 </mapper>
 

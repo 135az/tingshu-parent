@@ -52,4 +52,14 @@ public interface TrackInfoService extends IService<TrackInfo> {
      * @return
      */
     IPage<AlbumTrackListVo> findAlbumTrackPage(Page<AlbumTrackListVo> pageParam, Long albumId, Long userId);
+
+    /**
+     * 更新播放量
+     *
+     * @param albumId
+     * @param trackId
+     * @param statType
+     * @param count
+     */
+    void updateStat(Long albumId, Long trackId, String statType, Integer count);
 }

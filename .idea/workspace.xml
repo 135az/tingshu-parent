@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现专辑声音列表分页查询功能&#10;- 在TrackInfoApiController中新增findAlbumTrackPage接口，支持根据专辑ID分页获取声音列表&#10;- 扩展TrackInfoMapper接口与XML映射文件，添加selectAlbumTrackPage方法实现声音列表查询逻辑&#10;- 在TrackInfoService中定义并实现findAlbumTrackPage服务方法，处理声音列表分页与付费标识逻辑&#10;- 新增AlbumTrackListVo实体类用于封装声音列表返回数据-优化用户权限校验逻辑，支持未登录状态下展示付费标识&#10;- 增加对试听集数的特殊处理，确保免费声音不显示付费标识&#10;- 完善VIP用户和已购声音用户的付费标识判断逻辑&#10;- 在UserInfoApiController中新增userIsPaidTrack接口，用于判断用户是否购买指定声音&#10;- 扩展UserInfoFeignClient及其降级类，支持远程调用用户付费状态查询&#10;- 在UserInfoService中实现userIsPaidTrack方法，完成用户付费状态的业务逻辑处理">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat增用户声音(user): 新播放进度查询接口&#10;&#10;- 在UserListenProcessApiController中添加getTrackBreakSecond接口，支持根据声音ID查询用户上次播放跳出时间- 扩展UserListenProcessService接口及其实现类，新增getTrackBreakSecond方法从MongoDB中获取播放进度&#10;- 集成MongoUtil工具类动态获取用户播放进度集合名称&#10;- 使用BigDecimal类型精确表示播放时间秒数&#10;- 添加@GuiGuLogin注解实现用户身份认证拦截&#10;- 集成Swagger注信息解完善接口文档&#10;- 优化MongoDB查询逻辑，支持按用户ID和声音ID联合查询播放记录">
+      <change afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/receiver/TrackReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/TrackInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/TrackInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/TrackInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/TrackInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserListenProcessApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserListenProcessApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserListenProcessService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserListenProcessService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserListenProcessServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserListenProcessServiceImpl.java" afterDir="false" />
@@ -267,7 +276,7 @@
       <workItem from="1761793024761" duration="15000" />
       <workItem from="1761975928024" duration="23611000" />
       <workItem from="1762086900835" duration="7000" />
-      <workItem from="1762223966518" duration="8548000" />
+      <workItem from="1762223966518" duration="10829000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -453,7 +462,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762233063122</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="feat增用户声音(user): 新播放进度查询接口&#10;&#10;- 在UserListenProcessApiController中添加getTrackBreakSecond接口，支持根据声音ID查询用户上次播放跳出时间- 扩展UserListenProcessService接口及其实现类，新增getTrackBreakSecond方法从MongoDB中获取播放进度&#10;- 集成MongoUtil工具类动态获取用户播放进度集合名称&#10;- 使用BigDecimal类型精确表示播放时间秒数&#10;- 添加@GuiGuLogin注解实现用户身份认证拦截&#10;- 集成Swagger注信息解完善接口文档&#10;- 优化MongoDB查询逻辑，支持按用户ID和声音ID联合查询播放记录">
+      <option name="closed" value="true" />
+      <created>1762242273769</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1762242273769</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,7 +513,8 @@
     <MESSAGE value="feat(search): 配置Logstash日志收集功能&#10;&#10;- 修改logback-spring.xml文件，启用Logstash日志收集配置- 更新Logstash目标地址为192.168.200.130:5044&#10;- 在开发环境配置中添加LOGSTASH appender引用&#10;- 引入logstash-logback-encoder依赖，版本号5.1- 调整XML命名空间声明顺序以符合标准格式&#10;- 统一XML标签闭合风格，去除多余空格&#10;- 移除不必要的换行符，保持配置文件整洁性" />
     <MESSAGE value="feat(album): 新增专辑统计信息查询接口&#10;&#10;- 在AlbumInfoApiController中添加getAlbumStatVo方法，根据专辑Id获取统计信息&#10;- 扩展AlbumInfoFeignClient和其降级类，支持远程调用专辑统计 在信息接口&#10;-新增AlbumInfoMapper中selectAlbumStat方法，并在XML中编写对应SQL查询逻辑&#10;- 在AlbumInfoService中定义并实现getAlbumStatVoByAlbumId方法&#10;- 在search服务中新增getItem接口，整合专辑详情与统计信息的异步查询&#10;-新增线程池配置类ThreadPoolExecutorConfig，优化多任务并发执行效率" />
     <MESSAGE value="feat(album): 实现专辑声音列表分页查询功能&#10;- 在TrackInfoApiController中新增findAlbumTrackPage接口，支持根据专辑ID分页获取声音列表&#10;- 扩展TrackInfoMapper接口与XML映射文件，添加selectAlbumTrackPage方法实现声音列表查询逻辑&#10;- 在TrackInfoService中定义并实现findAlbumTrackPage服务方法，处理声音列表分页与付费标识逻辑&#10;- 新增AlbumTrackListVo实体类用于封装声音列表返回数据-优化用户权限校验逻辑，支持未登录状态下展示付费标识&#10;- 增加对试听集数的特殊处理，确保免费声音不显示付费标识&#10;- 完善VIP用户和已购声音用户的付费标识判断逻辑&#10;- 在UserInfoApiController中新增userIsPaidTrack接口，用于判断用户是否购买指定声音&#10;- 扩展UserInfoFeignClient及其降级类，支持远程调用用户付费状态查询&#10;- 在UserInfoService中实现userIsPaidTrack方法，完成用户付费状态的业务逻辑处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现专辑声音列表分页查询功能&#10;- 在TrackInfoApiController中新增findAlbumTrackPage接口，支持根据专辑ID分页获取声音列表&#10;- 扩展TrackInfoMapper接口与XML映射文件，添加selectAlbumTrackPage方法实现声音列表查询逻辑&#10;- 在TrackInfoService中定义并实现findAlbumTrackPage服务方法，处理声音列表分页与付费标识逻辑&#10;- 新增AlbumTrackListVo实体类用于封装声音列表返回数据-优化用户权限校验逻辑，支持未登录状态下展示付费标识&#10;- 增加对试听集数的特殊处理，确保免费声音不显示付费标识&#10;- 完善VIP用户和已购声音用户的付费标识判断逻辑&#10;- 在UserInfoApiController中新增userIsPaidTrack接口，用于判断用户是否购买指定声音&#10;- 扩展UserInfoFeignClient及其降级类，支持远程调用用户付费状态查询&#10;- 在UserInfoService中实现userIsPaidTrack方法，完成用户付费状态的业务逻辑处理" />
+    <MESSAGE value="feat增用户声音(user): 新播放进度查询接口&#10;&#10;- 在UserListenProcessApiController中添加getTrackBreakSecond接口，支持根据声音ID查询用户上次播放跳出时间- 扩展UserListenProcessService接口及其实现类，新增getTrackBreakSecond方法从MongoDB中获取播放进度&#10;- 集成MongoUtil工具类动态获取用户播放进度集合名称&#10;- 使用BigDecimal类型精确表示播放时间秒数&#10;- 添加@GuiGuLogin注解实现用户身份认证拦截&#10;- 集成Swagger注信息解完善接口文档&#10;- 优化MongoDB查询逻辑，支持按用户ID和声音ID联合查询播放记录" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat增用户声音(user): 新播放进度查询接口&#10;&#10;- 在UserListenProcessApiController中添加getTrackBreakSecond接口，支持根据声音ID查询用户上次播放跳出时间- 扩展UserListenProcessService接口及其实现类，新增getTrackBreakSecond方法从MongoDB中获取播放进度&#10;- 集成MongoUtil工具类动态获取用户播放进度集合名称&#10;- 使用BigDecimal类型精确表示播放时间秒数&#10;- 添加@GuiGuLogin注解实现用户身份认证拦截&#10;- 集成Swagger注信息解完善接口文档&#10;- 优化MongoDB查询逻辑，支持按用户ID和声音ID联合查询播放记录" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

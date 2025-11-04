@@ -233,6 +233,12 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         return albumInfoMapper.selectAlbumStat(albumId);
     }
 
+    @Override
+    public void updateStat(Long albumId, String statType, Integer count) {
+        //	更新数据
+        albumInfoMapper.updateStat(albumId, statType, count);
+    }
+
     /**
      * 初始化统计数据
      *
