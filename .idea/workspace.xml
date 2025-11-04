@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(search): 配置Logstash日志收集功能&#10;&#10;- 修改logback-spring.xml文件，启用Logstash日志收集配置- 更新Logstash目标地址为192.168.200.130:5044&#10;- 在开发环境配置中添加LOGSTASH appender引用&#10;- 引入logstash-logback-encoder依赖，版本号5.1- 调整XML命名空间声明顺序以符合标准格式&#10;- 统一XML标签闭合风格，去除多余空格&#10;- 移除不必要的换行符，保持配置文件整洁性">
-      <change afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/config/ThreadPoolExecutorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/AlbumInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/AlbumInfoFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/AlbumInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/AlbumInfoDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/AlbumInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/AlbumInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/AlbumInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/AlbumInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/itemApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/itemApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/ItemServiceImpl.java" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 新增专辑统计信息查询接口&#10;&#10;- 在AlbumInfoApiController中添加getAlbumStatVo方法，根据专辑Id获取统计信息&#10;- 扩展AlbumInfoFeignClient和其降级类，支持远程调用专辑统计 在信息接口&#10;-新增AlbumInfoMapper中selectAlbumStat方法，并在XML中编写对应SQL查询逻辑&#10;- 在AlbumInfoService中定义并实现getAlbumStatVoByAlbumId方法&#10;- 在search服务中新增getItem接口，整合专辑详情与统计信息的异步查询&#10;-新增线程池配置类ThreadPoolExecutorConfig，优化多任务并发执行效率">
+      <change beforePath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/vo/album/AlbumTrackListVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/model/src/main/java/com/atguigu/tingshu/vo/album/AlbumTrackListVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/TrackInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/mapper/TrackInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/TrackInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/mapper/TrackInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +275,7 @@
       <workItem from="1761793024761" duration="15000" />
       <workItem from="1761975928024" duration="23611000" />
       <workItem from="1762086900835" duration="7000" />
-      <workItem from="1762223966518" duration="2330000" />
+      <workItem from="1762223966518" duration="5199000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -446,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762076714103</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat(album): 新增专辑统计信息查询接口&#10;&#10;- 在AlbumInfoApiController中添加getAlbumStatVo方法，根据专辑Id获取统计信息&#10;- 扩展AlbumInfoFeignClient和其降级类，支持远程调用专辑统计 在信息接口&#10;-新增AlbumInfoMapper中selectAlbumStat方法，并在XML中编写对应SQL查询逻辑&#10;- 在AlbumInfoService中定义并实现getAlbumStatVoByAlbumId方法&#10;- 在search服务中新增getItem接口，整合专辑详情与统计信息的异步查询&#10;-新增线程池配置类ThreadPoolExecutorConfig，优化多任务并发执行效率">
+      <option name="closed" value="true" />
+      <created>1762226537104</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1762226537104</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -487,7 +494,8 @@
     <MESSAGE value="feat(album): 新增查询一级分类下置顶三级分类接口&#10;&#10;- 在BaseCategoryApiController中添加findTopBaseCategory3方法&#10;- 实现根据一级分类ID查询置顶三级分类列表功能&#10;- 在BaseCategoryService中定义findTopBaseCategory3ByCategory1Id方法&#10;- 在BaseCategoryServiceImpl中实现具体查询逻辑&#10;- 更新CategoryFeignClient及其熔断类以支持新接口&#10;- 在搜索服务中新增频道页数据查询接口&#10;- 实现频道页数据聚合查询逻辑&#10;- 支持根据一级分类ID获取置顶三级分类及对应专辑数据" />
     <MESSAGE value="feat(search): 实现搜索关键字自动补全功能&#10;&#10;- 新增自动补全接口 completeSuggest&#10;- 实现基于拼音和首字母的模糊匹配逻辑&#10;- 添加专辑标题、简介、主播的提词数据索引&#10;- 支持拼音转换和首字母提取工具类&#10;- 构建 Completion Suggest 查询 DSL语句&#10;- 实现补全结果去重与数量补足逻辑&#10;- 新增 SuggestIndexRepository用于提词数据操作" />
     <MESSAGE value="feat(search): 配置Logstash日志收集功能&#10;&#10;- 修改logback-spring.xml文件，启用Logstash日志收集配置- 更新Logstash目标地址为192.168.200.130:5044&#10;- 在开发环境配置中添加LOGSTASH appender引用&#10;- 引入logstash-logback-encoder依赖，版本号5.1- 调整XML命名空间声明顺序以符合标准格式&#10;- 统一XML标签闭合风格，去除多余空格&#10;- 移除不必要的换行符，保持配置文件整洁性" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(search): 配置Logstash日志收集功能&#10;&#10;- 修改logback-spring.xml文件，启用Logstash日志收集配置- 更新Logstash目标地址为192.168.200.130:5044&#10;- 在开发环境配置中添加LOGSTASH appender引用&#10;- 引入logstash-logback-encoder依赖，版本号5.1- 调整XML命名空间声明顺序以符合标准格式&#10;- 统一XML标签闭合风格，去除多余空格&#10;- 移除不必要的换行符，保持配置文件整洁性" />
+    <MESSAGE value="feat(album): 新增专辑统计信息查询接口&#10;&#10;- 在AlbumInfoApiController中添加getAlbumStatVo方法，根据专辑Id获取统计信息&#10;- 扩展AlbumInfoFeignClient和其降级类，支持远程调用专辑统计 在信息接口&#10;-新增AlbumInfoMapper中selectAlbumStat方法，并在XML中编写对应SQL查询逻辑&#10;- 在AlbumInfoService中定义并实现getAlbumStatVoByAlbumId方法&#10;- 在search服务中新增getItem接口，整合专辑详情与统计信息的异步查询&#10;-新增线程池配置类ThreadPoolExecutorConfig，优化多任务并发执行效率" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 新增专辑统计信息查询接口&#10;&#10;- 在AlbumInfoApiController中添加getAlbumStatVo方法，根据专辑Id获取统计信息&#10;- 扩展AlbumInfoFeignClient和其降级类，支持远程调用专辑统计 在信息接口&#10;-新增AlbumInfoMapper中selectAlbumStat方法，并在XML中编写对应SQL查询逻辑&#10;- 在AlbumInfoService中定义并实现getAlbumStatVoByAlbumId方法&#10;- 在search服务中新增getItem接口，整合专辑详情与统计信息的异步查询&#10;-新增线程池配置类ThreadPoolExecutorConfig，优化多任务并发执行效率" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
