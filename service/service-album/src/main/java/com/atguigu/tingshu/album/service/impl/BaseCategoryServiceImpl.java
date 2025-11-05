@@ -7,6 +7,7 @@ import com.atguigu.tingshu.album.mapper.BaseCategory2Mapper;
 import com.atguigu.tingshu.album.mapper.BaseCategory3Mapper;
 import com.atguigu.tingshu.album.mapper.BaseCategoryViewMapper;
 import com.atguigu.tingshu.album.service.BaseCategoryService;
+import com.atguigu.tingshu.common.cache.GuiGuCache;
 import com.atguigu.tingshu.model.album.BaseAttribute;
 import com.atguigu.tingshu.model.album.BaseCategory1;
 import com.atguigu.tingshu.model.album.BaseCategory2;
@@ -106,6 +107,7 @@ public class BaseCategoryServiceImpl extends ServiceImpl<BaseCategory1Mapper, Ba
     }
 
     @Override
+    @GuiGuCache(prefix = "category:")
     public BaseCategoryView getCategoryViewByCategory3Id(Long category3Id) {
         return baseCategoryViewMapper.selectById(category3Id);
     }

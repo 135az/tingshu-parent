@@ -5,7 +5,9 @@ import com.atguigu.tingshu.album.mapper.AlbumInfoMapper;
 import com.atguigu.tingshu.album.mapper.AlbumStatMapper;
 import com.atguigu.tingshu.album.service.AlbumAttributeValueService;
 import com.atguigu.tingshu.album.service.AlbumInfoService;
+import com.atguigu.tingshu.common.cache.GuiGuCache;
 import com.atguigu.tingshu.common.constant.KafkaConstant;
+import com.atguigu.tingshu.common.constant.RedisConstant;
 import com.atguigu.tingshu.common.constant.SystemConstant;
 import com.atguigu.tingshu.common.service.KafkaService;
 import com.atguigu.tingshu.model.album.AlbumAttributeValue;
@@ -21,8 +23,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.Nullable;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
@@ -49,6 +54,12 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
 
     @Autowired
     private KafkaService kafkaService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedissonClient redissonClient;
 
 
     /**
@@ -150,8 +161,20 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
      * @param id
      * @return
      */
+    @GuiGuCache(prefix = RedisConstant.ALBUM_INFO_PREFIX)
     @Override
     public AlbumInfo getAlbumInfoById(Long id) {
+        return getAlbumInfoDB(id);
+    }
+
+    /**
+     * 从数据库中根据Id查询专辑信息
+     *
+     * @param id
+     * @return
+     */
+    @Nullable
+    private AlbumInfo getAlbumInfoDB(Long id) {
         // 查询专辑信息
         AlbumInfo albumInfo = this.getById(id);
         // 获取专辑属性值
@@ -229,6 +252,7 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
     }
 
     @Override
+    @GuiGuCache(prefix = "albumStat:")
     public AlbumStatVo getAlbumStatVoByAlbumId(Long albumId) {
         return albumInfoMapper.selectAlbumStat(albumId);
     }
