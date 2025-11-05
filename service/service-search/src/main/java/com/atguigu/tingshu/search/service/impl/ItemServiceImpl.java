@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.tingshu.album.client.AlbumInfoFeignClient;
 import com.atguigu.tingshu.album.client.CategoryFeignClient;
 import com.atguigu.tingshu.album.client.TrackInfoFeignClient;
+import com.atguigu.tingshu.common.constant.RedisConstant;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.model.album.AlbumInfo;
 import com.atguigu.tingshu.model.album.BaseCategoryView;
@@ -13,6 +14,8 @@ import com.atguigu.tingshu.user.client.UserListenProcessFeignClient;
 import com.atguigu.tingshu.vo.album.AlbumStatVo;
 import com.atguigu.tingshu.vo.user.UserInfoVo;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBloomFilter;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -42,8 +45,8 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private UserListenProcessFeignClient userListenProcessFeignClient;
 
-    // @Autowired
-    // private RedissonClient redissonClient;
+    @Autowired
+    private RedissonClient redissonClient;
 
     @Autowired
     private ThreadPoolExecutor threadPoolExecutor;
@@ -54,12 +57,12 @@ public class ItemServiceImpl implements ItemService {
         Map<String, Object> result = new HashMap<>();
 
         // 远程调用接口之前 提前知道用户访问的专辑id是否存在与布隆过滤器
-//        RBloomFilter<Object> bloomFilter = redissonClient.getBloomFilter(RedisConstant.ALBUM_BLOOM_FILTER);
-//        if (!bloomFilter.contains(albumId)) {
-//            log.error("用户查询专辑不存在：{}", albumId);
-//            //查询数据不存在直接返回空对象
-//            return result;
-//        }
+        RBloomFilter<Object> bloomFilter = redissonClient.getBloomFilter(RedisConstant.ALBUM_BLOOM_FILTER);
+        if (!bloomFilter.contains(albumId)) {
+            log.error("用户查询专辑不存在：{}", albumId);
+            // 查询数据不存在直接返回空对象
+            return result;
+        }
 
         // 通过albumId 查询albumInfo
         CompletableFuture<AlbumInfo> albumCompletableFuture = CompletableFuture.supplyAsync(() -> {
