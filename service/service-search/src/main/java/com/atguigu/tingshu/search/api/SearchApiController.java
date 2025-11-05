@@ -77,6 +77,20 @@ public class SearchApiController {
     }
 
     /**
+     * 批量下架
+     *
+     * @return
+     */
+    @Operation(summary = "批量下架")
+    @GetMapping("batchLowerAlbum")
+    public Result batchLowerAlbum() {
+        for (long i = 1; i <= 1500; i++) {
+            searchService.lowerAlbum(i);
+        }
+        return Result.ok();
+    }
+
+    /**
      * 根据关键词检索
      *
      * @param albumIndexQuery
