@@ -4,20 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(search): 集成布隆过滤器优化专辑查询性能&#10;- 在 ItemServiceImpl 中启用 RedissonClient 并恢复布隆过滤器校验逻辑&#10;-通过布隆过滤器提前拦截无效 albumId 查询请求&#10;- 在 SearchServiceImpl 中实现专辑上架时将 albumId 添加至布隆过滤器&#10;- 修改 ServiceAlbumApplication 实现 CommandLineRunner 接口&#10;- 项目启动时初始化布隆过滤器，设置预计元素数量与误判率&#10;- 引入 RedisConstant 常量类统一管理布隆过滤器键名&#10;-优化查询流程，避免无效请求穿透至数据库层">
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/java/com/atguigu/tingshu/CDCApplicaiton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/java/com/atguigu/tingshu/config/RedisConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/java/com/atguigu/tingshu/handler/AlbumInfoCdcHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/java/com/atguigu/tingshu/handler/UserCdcHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/java/com/atguigu/tingshu/model/CDCEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/resources/application-dev.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-cdc/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(cdc): 实现CDC服务模块&#10;&#10;- 新增CDC服务模块，用于监听数据库变更事件&#10;- 集成Canal客户端实现数据变更捕获&#10;- 实现AlbumInfo和UserInfo表的数据变更处理器&#10;- 配置RedisTemplate以方式支持JSON序列化&#10;- 添加Redis缓存清理逻辑，在数据变更时删除对应缓存&#10;- 初始化CDC服务的SpringBoot启动类及相关配置文件&#10;- 在IDEA项目中注册新模块并配置运行环境&#10;-为搜索服务添加批量下架专辑的功能接口">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/VipServiceConfigFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/VipServiceConfigFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/VipServiceConfigDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/VipServiceConfigDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/VipServiceConfigApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/VipServiceConfigApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +82,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
     "Maven.server-gateway [install].executor": "Run",
     "Maven.service-album [install].executor": "Run",
     "Maven.tingshu-parent [clean].executor": "Run",
@@ -99,6 +101,7 @@
     "Spring Boot.ServerGatewayApplication.executor": "Run",
     "Spring Boot.ServiceAccountApplication.executor": "Run",
     "Spring Boot.ServiceAlbumApplication.executor": "Run",
+    "Spring Boot.ServiceOrderApplication.executor": "Run",
     "Spring Boot.ServiceSearchApplication.executor": "Run",
     "Spring Boot.ServiceUserApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
@@ -160,7 +163,20 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CDCApplicaiton">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.atguigu.tingshu.Main" />
+      <module name="service-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.atguigu.tingshu.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CDCApplicaiton" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="service-cdc" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.tingshu.CDCApplicaiton" />
@@ -252,6 +268,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="Spring Boot.ServerGatewayApplication" />
       <item itemvalue="Spring Boot.ServiceAccountApplication" />
       <item itemvalue="Spring Boot.ServiceAlbumApplication" />
@@ -267,6 +284,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Spring Boot.CDCApplicaiton" />
       </list>
     </recent_temporary>
@@ -299,7 +317,9 @@
       <workItem from="1761793024761" duration="15000" />
       <workItem from="1761975928024" duration="23611000" />
       <workItem from="1762086900835" duration="7000" />
-      <workItem from="1762223966518" duration="31349000" />
+      <workItem from="1762223966518" duration="37481000" />
+      <workItem from="1762409983858" duration="2787000" />
+      <workItem from="1762412975353" duration="662000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -533,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762313566781</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat(cdc): 实现CDC服务模块&#10;&#10;- 新增CDC服务模块，用于监听数据库变更事件&#10;- 集成Canal客户端实现数据变更捕获&#10;- 实现AlbumInfo和UserInfo表的数据变更处理器&#10;- 配置RedisTemplate以方式支持JSON序列化&#10;- 添加Redis缓存清理逻辑，在数据变更时删除对应缓存&#10;- 初始化CDC服务的SpringBoot启动类及相关配置文件&#10;- 在IDEA项目中注册新模块并配置运行环境&#10;-为搜索服务添加批量下架专辑的功能接口">
+      <option name="closed" value="true" />
+      <created>1762327403311</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1762327403311</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,7 +581,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 实现专辑删除功能&#10;&#10;- 新增根据专辑ID删除专辑信息的API接口- 实现删除专辑及其关联属性值和统计数据的业务逻辑- 添加事务注解确保数据一致性&#10;- 完善删除操作的Mapper调用和条件构造器使用" />
     <MESSAGE value="feat(album): 实现专辑信息查询与修改功能&#10;&#10;- 新增根据ID查询专辑信息的API接口&#10;- 实现专辑信息修改的PUT请求接口&#10;- 补充专辑属性值的查询与更新逻辑- 添加事务注解保证数据一致性&#10;- 完善专辑信息与属性值的联合处理流程&#10;-优化BeanUtils拷贝与集合判空逻辑&#10;- 集成Swagger注解提升接口文档可读性" />
     <MESSAGE value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明" />
@@ -578,7 +605,8 @@
     <MESSAGE value="feat(user): 新增获取用户最近播放声音接口&#10;&#10;- 在 UserListenProcessApiController 中Track添加 getLately- 接口ProcessService 扩展 UserListen 接口及其实现类，新增 getLatelyTrack 方法&#10;- 实现从 MongoDB 查询用户最近播放记录的逻辑- 按 updateTime降序排序，获取最新播放的声音信息&#10;- 返回包含 albumId 和 trackId 的 Map 结构数据&#10;- 集成 @GuiGuLogin 注解实现用户身份认证拦截&#10;- 使用 MongoTemplate 动态查询用户播放进度集合- 添加 Swagger 注解完善接口文档说明" />
     <MESSAGE value="feat(cache): 实现基于注解的缓存机制&#10;&#10;- 新增 @GuiGuCache 注解用于方法级别缓存控制&#10;- 实现 GuiGuCacheAspect 切面类处理缓存逻辑&#10;- 集成 Redis 与 Redisson 实现分布式缓存与锁机制&#10;- 在 AlbumInfoServiceImpl 和 BaseCategoryServiceImpl 中应用缓存注解&#10;-优化缓存 Key 生成策略，支持方法参数自动拼接&#10;- 添加缓存穿透保护机制，空值也缓存临时占位符&#10;- 配置 Redisson 客户端支持单点模式连接&#10;- 启用 redisson-spring-boot-starter 依赖支持" />
     <MESSAGE value="feat(search): 集成布隆过滤器优化专辑查询性能&#10;- 在 ItemServiceImpl 中启用 RedissonClient 并恢复布隆过滤器校验逻辑&#10;-通过布隆过滤器提前拦截无效 albumId 查询请求&#10;- 在 SearchServiceImpl 中实现专辑上架时将 albumId 添加至布隆过滤器&#10;- 修改 ServiceAlbumApplication 实现 CommandLineRunner 接口&#10;- 项目启动时初始化布隆过滤器，设置预计元素数量与误判率&#10;- 引入 RedisConstant 常量类统一管理布隆过滤器键名&#10;-优化查询流程，避免无效请求穿透至数据库层" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(search): 集成布隆过滤器优化专辑查询性能&#10;- 在 ItemServiceImpl 中启用 RedissonClient 并恢复布隆过滤器校验逻辑&#10;-通过布隆过滤器提前拦截无效 albumId 查询请求&#10;- 在 SearchServiceImpl 中实现专辑上架时将 albumId 添加至布隆过滤器&#10;- 修改 ServiceAlbumApplication 实现 CommandLineRunner 接口&#10;- 项目启动时初始化布隆过滤器，设置预计元素数量与误判率&#10;- 引入 RedisConstant 常量类统一管理布隆过滤器键名&#10;-优化查询流程，避免无效请求穿透至数据库层" />
+    <MESSAGE value="feat(cdc): 实现CDC服务模块&#10;&#10;- 新增CDC服务模块，用于监听数据库变更事件&#10;- 集成Canal客户端实现数据变更捕获&#10;- 实现AlbumInfo和UserInfo表的数据变更处理器&#10;- 配置RedisTemplate以方式支持JSON序列化&#10;- 添加Redis缓存清理逻辑，在数据变更时删除对应缓存&#10;- 初始化CDC服务的SpringBoot启动类及相关配置文件&#10;- 在IDEA项目中注册新模块并配置运行环境&#10;-为搜索服务添加批量下架专辑的功能接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(cdc): 实现CDC服务模块&#10;&#10;- 新增CDC服务模块，用于监听数据库变更事件&#10;- 集成Canal客户端实现数据变更捕获&#10;- 实现AlbumInfo和UserInfo表的数据变更处理器&#10;- 配置RedisTemplate以方式支持JSON序列化&#10;- 添加Redis缓存清理逻辑，在数据变更时删除对应缓存&#10;- 初始化CDC服务的SpringBoot启动类及相关配置文件&#10;- 在IDEA项目中注册新模块并配置运行环境&#10;-为搜索服务添加批量下架专辑的功能接口" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -94,4 +94,14 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             return map;
         }
     }
+
+    @Override
+    public Boolean isPaidAlbum(Long userId, Long albumId) {
+        // 根据用户Id 与专辑Id 查询是否有记录
+        Long count = userPaidAlbumMapper.selectCount(new LambdaQueryWrapper<UserPaidAlbum>()
+                .eq(UserPaidAlbum::getUserId, userId)
+                .eq(UserPaidAlbum::getAlbumId, albumId)
+        );
+        return count > 0;
+    }
 }
