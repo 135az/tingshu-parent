@@ -5,6 +5,7 @@ import com.atguigu.tingshu.model.user.UserPaidAlbum;
 import com.atguigu.tingshu.model.user.UserPaidTrack;
 import com.atguigu.tingshu.user.mapper.UserInfoMapper;
 import com.atguigu.tingshu.user.mapper.UserPaidAlbumMapper;
+import com.atguigu.tingshu.user.mapper.UserPaidTrackMapper;
 import com.atguigu.tingshu.user.service.UserInfoService;
 import com.atguigu.tingshu.user.service.UserPaidTrackService;
 import com.atguigu.tingshu.vo.user.UserInfoVo;
@@ -33,6 +34,9 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
     @Autowired
     private UserPaidTrackService userPaidTrackService;
+
+    @Autowired
+    private UserPaidTrackMapper userPaidTrackMapper;
 
     @Override
     public UserInfoVo getUserInfoVoByUserId(Long userId) {
@@ -103,5 +107,19 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
                 .eq(UserPaidAlbum::getAlbumId, albumId)
         );
         return count > 0;
+    }
+
+    @Override
+    public List<Long> findUserPaidTrackList(Long userId, Long albumId) {
+        // 根据用户Id 与 专辑Id 获取到已购买的声音集合
+        List<UserPaidTrack> userPaidTrackList = userPaidTrackMapper.selectList(
+                new LambdaQueryWrapper<UserPaidTrack>()
+                        .eq(UserPaidTrack::getUserId, userId)
+                        .eq(UserPaidTrack::getAlbumId, albumId)
+        );
+        // 获取到已购买的声音集合Id 列表
+        List<Long> trackIdList = userPaidTrackList.stream().map(UserPaidTrack::getTrackId).collect(Collectors.toList());
+        // 返回集合数据
+        return trackIdList;
     }
 }

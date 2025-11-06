@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -167,6 +168,21 @@ public class TrackInfoApiController {
         IPage<AlbumTrackListVo> pageModel = trackInfoService.findAlbumTrackPage(pageParam, albumId, userId);
         //	返回数据
         return Result.ok(pageModel);
+    }
+
+    /**
+     * 获取用户声音分集购买支付列表
+     *
+     * @param trackId
+     * @return
+     */
+    @GuiGuLogin
+    @Operation(summary = "获取用户声音分集购买支付列表")
+    @GetMapping("/findUserTrackPaidList/{trackId}")
+    public Result<List<Map<String, Object>>> findUserTrackPaidList(@PathVariable Long trackId) {
+        // 获取购买记录集合
+        List<Map<String, Object>> map = trackInfoService.findUserTrackPaidList(trackId);
+        return Result.ok(map);
     }
 
 }

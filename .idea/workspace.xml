@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(order): 实现订单确认接口&#10;&#10;- 新增订单确认接口 trade，支持专辑和 VIP 商品下单&#10;- 集成用户、专辑、VIP 配置服务远程调用&#10;- 实现订单金额计算逻辑，包括原价、减免金额和最终价格&#10;- 支持 VIP 用户与普通用户不同折扣规则&#10;- 添加订单明细与减免明细构建逻辑&#10;- 使用 Redis 实现防重提交机制&#10;- 生成订单签名防止前端篡改支付数据&#10;- 完善订单相关 VO 类型转换与数据封装&#10;- 更新 Nacos 配置中心地址为生产环境 IP&#10;- 补充用户是否已购买专辑的判断接口&#10;- 实现 Feign 客户端接口与降级处理逻辑&#10;- 完善 Swagger 文档注解与接口描述信息">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server-gateway/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +300,7 @@
       <workItem from="1762086900835" duration="7000" />
       <workItem from="1762223966518" duration="37481000" />
       <workItem from="1762409983858" duration="2787000" />
-      <workItem from="1762412975353" duration="3404000" />
+      <workItem from="1762412975353" duration="6653000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -544,7 +550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762413722892</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验">
+      <option name="closed" value="true" />
+      <created>1762416428279</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1762416428279</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +578,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 新增查询当前用户全部专辑列表接口&#10;&#10;- 在AlbumInfoApiController中添加findUserAllAlbumList方法&#10;- 实现根据用户ID查询其所有专辑的业务逻辑&#10;-通过AlbumInfoService定义并实现查询方法&#10;- 使用MyBatis Plus分页查询并返回专辑ID与标题- 集成AuthContextHolder获取当前用户ID- 添加Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增声音上传功能&#10;&#10;- 在TrackInfoApiController中添加uploadTrack接口&#10;- 实现音频文件上传至VOD服务的业务逻辑&#10;- 集成腾讯云VOD SDK处理文件上传与转码&#10;- 添加VodService接口及VodServiceImpl实现类&#10;- 支持上传临时路径配置与文件ID、URL返回&#10;- 集成Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增声音保存与上传功能&#10;&#10;- 在TrackInfoApiController中添加saveTrackInfo接口- 实现声音信息保存与流媒体数据获取逻辑&#10;- 集成腾讯云VOD服务实现音频文件上传与信息查询&#10;- 添加事务管理确保数据一致性- 初始化声音统计数据（播放、收藏、点赞、评论）&#10;- 更新专辑声音总数并与专辑信息关联- 使用Validation注解校验入参完整性&#10;- 集成Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增用户声音分页查询功能- 在TrackInfoApiController中添加findUserTrackPage接口&#10;- 实现根据用户ID分页查询声音列表的业务逻辑- 添加TrackInfoQuery查询参数类支持条件过滤&#10;- 在TrackInfoMapper中定义selectUserTrackPage方法&#10;- 编写对应的XML SQL查询语句支持动态条件和统计字段&#10;-通过TrackInfoService定义并实现分页查询方法- 集成MyBatis Plus分页插件完成数据分页处理&#10;- 使用Swagger注解完善接口文档说明- 添加inspection profiles规则提升代码质量检查&#10;- 更新SQL方言映射文件支持TrackInfoMapper.xml" />
@@ -589,7 +602,8 @@
     <MESSAGE value="feat(search): 集成布隆过滤器优化专辑查询性能&#10;- 在 ItemServiceImpl 中启用 RedissonClient 并恢复布隆过滤器校验逻辑&#10;-通过布隆过滤器提前拦截无效 albumId 查询请求&#10;- 在 SearchServiceImpl 中实现专辑上架时将 albumId 添加至布隆过滤器&#10;- 修改 ServiceAlbumApplication 实现 CommandLineRunner 接口&#10;- 项目启动时初始化布隆过滤器，设置预计元素数量与误判率&#10;- 引入 RedisConstant 常量类统一管理布隆过滤器键名&#10;-优化查询流程，避免无效请求穿透至数据库层" />
     <MESSAGE value="feat(cdc): 实现CDC服务模块&#10;&#10;- 新增CDC服务模块，用于监听数据库变更事件&#10;- 集成Canal客户端实现数据变更捕获&#10;- 实现AlbumInfo和UserInfo表的数据变更处理器&#10;- 配置RedisTemplate以方式支持JSON序列化&#10;- 添加Redis缓存清理逻辑，在数据变更时删除对应缓存&#10;- 初始化CDC服务的SpringBoot启动类及相关配置文件&#10;- 在IDEA项目中注册新模块并配置运行环境&#10;-为搜索服务添加批量下架专辑的功能接口" />
     <MESSAGE value="feat(order): 实现订单确认接口&#10;&#10;- 新增订单确认接口 trade，支持专辑和 VIP 商品下单&#10;- 集成用户、专辑、VIP 配置服务远程调用&#10;- 实现订单金额计算逻辑，包括原价、减免金额和最终价格&#10;- 支持 VIP 用户与普通用户不同折扣规则&#10;- 添加订单明细与减免明细构建逻辑&#10;- 使用 Redis 实现防重提交机制&#10;- 生成订单签名防止前端篡改支付数据&#10;- 完善订单相关 VO 类型转换与数据封装&#10;- 更新 Nacos 配置中心地址为生产环境 IP&#10;- 补充用户是否已购买专辑的判断接口&#10;- 实现 Feign 客户端接口与降级处理逻辑&#10;- 完善 Swagger 文档注解与接口描述信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(order): 实现订单确认接口&#10;&#10;- 新增订单确认接口 trade，支持专辑和 VIP 商品下单&#10;- 集成用户、专辑、VIP 配置服务远程调用&#10;- 实现订单金额计算逻辑，包括原价、减免金额和最终价格&#10;- 支持 VIP 用户与普通用户不同折扣规则&#10;- 添加订单明细与减免明细构建逻辑&#10;- 使用 Redis 实现防重提交机制&#10;- 生成订单签名防止前端篡改支付数据&#10;- 完善订单相关 VO 类型转换与数据封装&#10;- 更新 Nacos 配置中心地址为生产环境 IP&#10;- 补充用户是否已购买专辑的判断接口&#10;- 实现 Feign 客户端接口与降级处理逻辑&#10;- 完善 Swagger 文档注解与接口描述信息" />
+    <MESSAGE value="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

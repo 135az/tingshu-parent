@@ -9,6 +9,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+import java.util.Map;
+
 public interface TrackInfoService extends IService<TrackInfo> {
 
     /**
@@ -62,4 +65,12 @@ public interface TrackInfoService extends IService<TrackInfo> {
      * @param count
      */
     void updateStat(Long albumId, Long trackId, String statType, Integer count);
+
+    /**
+     * 根据声音Id 获取购买列表
+     *
+     * @param trackId
+     * @return
+     */
+    List<Map<String, Object>> findUserTrackPaidList(Long trackId);
 }
