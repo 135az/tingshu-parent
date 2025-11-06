@@ -73,4 +73,13 @@ public interface TrackInfoService extends IService<TrackInfo> {
      * @return
      */
     List<Map<String, Object>> findUserTrackPaidList(Long trackId);
+
+    /**
+     * 批量获取下单付费声音列表
+     *
+     * @param trackId
+     * @param trackCount
+     * @return
+     */
+    List<TrackInfo> findPaidTrackInfoList(Long trackId, Integer trackCount);
 }

@@ -376,6 +376,37 @@ public class TrackInfoServiceImpl extends ServiceImpl<TrackInfoMapper, TrackInfo
         return list;
     }
 
+    @Override
+    public List<TrackInfo> findPaidTrackInfoList(Long trackId, Integer trackCount) {
+        // 根据声音Id 获取到声音对象
+        TrackInfo trackInfo = this.getById(trackId);
+        Assert.notNull(trackInfo, "声音对象不能为空");
+
+        // 获取已支付的声音id列表
+        Result<List<Long>> trackIdListResult = userInfoFeignClient.findUserPaidTrackList(trackInfo.getAlbumId());
+        Assert.notNull(trackIdListResult, "已支付声音Id列表不能为空");
+        List<Long> trackIdList = trackIdListResult.getData();
+        Assert.notNull(trackIdList, "已支付声音Id列表不能为空");
+        // 声明一个声音对象集合
+        List<TrackInfo> trackInfoList = new ArrayList<>();
+        if (trackCount > 0) {
+            // 构建查询条件
+            LambdaQueryWrapper<TrackInfo> trackInfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            trackInfoLambdaQueryWrapper.eq(TrackInfo::getAlbumId, trackInfo.getAlbumId());
+            trackInfoLambdaQueryWrapper.gt(TrackInfo::getOrderNum, trackInfo.getOrderNum());
+            trackInfoLambdaQueryWrapper.orderByAsc(TrackInfo::getOrderNum);
+            if (!CollectionUtils.isEmpty(trackIdList)) {
+                trackInfoLambdaQueryWrapper.notIn(TrackInfo::getId, trackIdList);
+            }
+            trackInfoLambdaQueryWrapper.last("limit " + trackCount);
+            trackInfoList = this.list(trackInfoLambdaQueryWrapper);
+        } else {
+            trackInfoList.add(trackInfo);
+        }
+        // 返回当前集合对象
+        return trackInfoList;
+    }
+
     /**
      * 初始化统计数量
      *

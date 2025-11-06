@@ -2,11 +2,13 @@ package com.atguigu.tingshu.order.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.tingshu.album.client.AlbumInfoFeignClient;
+import com.atguigu.tingshu.album.client.TrackInfoFeignClient;
 import com.atguigu.tingshu.common.constant.SystemConstant;
 import com.atguigu.tingshu.common.execption.GuiguException;
 import com.atguigu.tingshu.common.result.Result;
 import com.atguigu.tingshu.common.result.ResultCodeEnum;
 import com.atguigu.tingshu.model.album.AlbumInfo;
+import com.atguigu.tingshu.model.album.TrackInfo;
 import com.atguigu.tingshu.model.order.OrderInfo;
 import com.atguigu.tingshu.model.user.VipServiceConfig;
 import com.atguigu.tingshu.order.helper.SignHelper;
@@ -32,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -52,6 +55,9 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private TrackInfoFeignClient trackInfoFeignClient;
 
 
     @Override
@@ -126,6 +132,31 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
                 orderDerateVo.setDerateAmount(originalAmount.subtract(orderAmount));
                 orderDerateVoList.add(orderDerateVo);
             }
+        } else if (tradeVo.getItemType().equals(SystemConstant.ORDER_ITEM_TYPE_TRACK)) {
+            //  判断用户是否购买过声音
+            if (tradeVo.getTrackCount() < 0) {
+                throw new GuiguException(ResultCodeEnum.ARGUMENT_VALID_ERROR);
+            }
+            //  获取下单声音列表
+            Result<List<TrackInfo>> trackInfoListResult = trackInfoFeignClient.findPaidTrackInfoList(tradeVo.getItemId(), tradeVo.getTrackCount());
+            List<TrackInfo> trackInfoList = trackInfoListResult.getData();
+            //  购买声音不支持折扣
+            Result<AlbumInfo> albumInfoResult = albumInfoFeignClient.getAlbumInfo(trackInfoList.get(0).getAlbumId());
+            AlbumInfo albumInfo = albumInfoResult.getData();
+            originalAmount = tradeVo.getTrackCount() > 0 ? albumInfo.getPrice().multiply(new BigDecimal(tradeVo.getTrackCount())) : albumInfo.getPrice();
+            //  计算订单总价
+            orderAmount = originalAmount;
+
+            //  循环遍历声音集合对象赋值订单明细
+            orderDetailVoList = trackInfoList.stream().map(trackInfo -> {
+                OrderDetailVo orderDetailVo = new OrderDetailVo();
+                orderDetailVo.setItemId(trackInfo.getId());
+                orderDetailVo.setItemUrl(trackInfo.getCoverUrl());
+                orderDetailVo.setItemPrice(albumInfo.getPrice());
+                orderDetailVo.setItemName(trackInfo.getTrackTitle());
+                return orderDetailVo;
+            }).collect(Collectors.toList());
+
         } else if (tradeVo.getItemType().equals(SystemConstant.ORDER_ITEM_TYPE_VIP)) {
             //  根据id 获取VIP 服务配置信息
             Result<VipServiceConfig> vipServiceConfigResult = vipServiceConfigFeignClient.getVipServiceConfig(tradeVo.getItemId());
@@ -173,7 +204,6 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         orderInfoVo.setPayWay(SystemConstant.ORDER_PAY_WAY_WEIXIN);
         //  生成签名
         Map<String, Object> parameterMap = JSON.parseObject(JSON.toJSONString(orderInfoVo), Map.class);
-        // {"orderDerateVoList":[{"derateType":"1406","derateAmount":20.00}],"itemType":"1003","orderAmount":40.00,"originalAmount":60.00,"tradeNo":"ed2628826ba54ebfa41632f9173a780d","derateAmount":20.00,"payWay":"","orderDetailVoList":[{"itemId":2,"itemName":"购买VIP3个月","itemPrice":40.00,"itemUrl":"http://39.98.123.211/group1/vip.png"}],"timestamp":1699606865851}
         String sign = SignHelper.getSign(parameterMap);
         orderInfoVo.setSign(sign);
         //  返回对象
