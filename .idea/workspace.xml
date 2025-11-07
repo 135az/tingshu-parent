@@ -4,14 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(album): 实现用户声音分集购买支付列表功能&#10;&#10;- 在TrackInfoApiController中新增findUserTrackPaidList接口&#10;- 实现根据声音ID获取后续未购买声音分集支付信息的逻辑&#10;- 添加TrackInfoService接口及其实现类中的findUserTrackPaidList方法&#10;- 集成用户购买记录Feign客户端调用获取已购声音ID列表&#10;- 构建不同集数组合的支付选项（本集、后10集、后20集等）&#10;- 支持最多购买50集的限制规则&#10;-优化getTrackListByAlbumId方法注释，移除冗余业务说明&#10;- 在bootstrap.properties中配置网络首选项解决Nacos注册问题&#10;- 在UserInfoApiController中新增findUserPaidTrackList接口- 实现根据专辑ID查询用户已购买声音ID列表的功能&#10;- 扩展UserInfoService及其实现类支持查询用户购买记录&#10;- 更新Feign客户端接口与降级实现以支持新功能调用">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作">
+      <change afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/handle/RedisDelayHandle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/receiver/UserReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/UserAccountFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/UserAccountFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/impl/UserAccountDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/impl/UserAccountDegradeFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/TrackInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/TrackInfoFeignClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/TrackInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/TrackInfoDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/TrackInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/receiver/AccountReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/receiver/AccountReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/mapper/OrderInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/mapper/OrderInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/resources/mapper/OrderInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/resources/mapper/OrderInfoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/resources/bootstrap.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +63,9 @@
     &quot;accountId&quot;: &quot;82a259b0-5905-4836-9424-87c6f7e2a532&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/receiver/AccountReceiver.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -113,7 +134,7 @@
     "project.structure.side.proportion": "0.2",
     "rearrange.code.on.save": "true",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -298,7 +319,7 @@
       <workItem from="1762086900835" duration="7000" />
       <workItem from="1762223966518" duration="37481000" />
       <workItem from="1762409983858" duration="2787000" />
-      <workItem from="1762412975353" duration="10258000" />
+      <workItem from="1762412975353" duration="22393000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -564,7 +585,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762421285350</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作">
+      <option name="closed" value="true" />
+      <created>1762424901128</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1762424901128</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,7 +613,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 新增声音保存与上传功能&#10;&#10;- 在TrackInfoApiController中添加saveTrackInfo接口- 实现声音信息保存与流媒体数据获取逻辑&#10;- 集成腾讯云VOD服务实现音频文件上传与信息查询&#10;- 添加事务管理确保数据一致性- 初始化声音统计数据（播放、收藏、点赞、评论）&#10;- 更新专辑声音总数并与专辑信息关联- 使用Validation注解校验入参完整性&#10;- 集成Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增用户声音分页查询功能- 在TrackInfoApiController中添加findUserTrackPage接口&#10;- 实现根据用户ID分页查询声音列表的业务逻辑- 添加TrackInfoQuery查询参数类支持条件过滤&#10;- 在TrackInfoMapper中定义selectUserTrackPage方法&#10;- 编写对应的XML SQL查询语句支持动态条件和统计字段&#10;-通过TrackInfoService定义并实现分页查询方法- 集成MyBatis Plus分页插件完成数据分页处理&#10;- 使用Swagger注解完善接口文档说明- 添加inspection profiles规则提升代码质量检查&#10;- 更新SQL方言映射文件支持TrackInfoMapper.xml" />
     <MESSAGE value="feat(album): 新增声音信息获取与修改接口&#10;&#10;- 在TrackInfoApiController中添加getTrackInfo接口&#10;- 实现根据ID获取声音详细信息的功能- 添加updateTrackInfo接口支持声音信息修改- 在TrackInfoService中定义updateTrackInfo方法&#10;- 实现声音信息更新逻辑，包括媒体文件校验&#10;- 集成VOD服务验证媒体文件ID有效性- 使用BeanUtils拷贝属性并更新声音数据&#10;- 添加异常处理机制确保数据一致性&#10;- 集成Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增声音删除功能&#10;&#10;- 在TrackInfoApiController中添加removeTrackInfo接口&#10;- 实现根据ID删除声音信息的业务逻辑- 添加事务管理确保数据一致性- 删除声音统计信息并更新专辑声音总数&#10;-重新计算声音序号并删除对应媒体文件&#10;- 在TrackInfoService中定义removeTrackInfo方法&#10;- 在VodService中添加removeTrack方法支持音频删除&#10;- 集成腾讯云VOD SDK实现媒体文件删除功能&#10;- 使用Swagger注解完善接口文档说明" />
@@ -609,7 +637,8 @@
     <MESSAGE value="feat(order): 实现订单确认接口&#10;&#10;- 新增订单确认接口 trade，支持专辑和 VIP 商品下单&#10;- 集成用户、专辑、VIP 配置服务远程调用&#10;- 实现订单金额计算逻辑，包括原价、减免金额和最终价格&#10;- 支持 VIP 用户与普通用户不同折扣规则&#10;- 添加订单明细与减免明细构建逻辑&#10;- 使用 Redis 实现防重提交机制&#10;- 生成订单签名防止前端篡改支付数据&#10;- 完善订单相关 VO 类型转换与数据封装&#10;- 更新 Nacos 配置中心地址为生产环境 IP&#10;- 补充用户是否已购买专辑的判断接口&#10;- 实现 Feign 客户端接口与降级处理逻辑&#10;- 完善 Swagger 文档注解与接口描述信息" />
     <MESSAGE value="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验" />
     <MESSAGE value="feat(album): 实现用户声音分集购买支付列表功能&#10;&#10;- 在TrackInfoApiController中新增findUserTrackPaidList接口&#10;- 实现根据声音ID获取后续未购买声音分集支付信息的逻辑&#10;- 添加TrackInfoService接口及其实现类中的findUserTrackPaidList方法&#10;- 集成用户购买记录Feign客户端调用获取已购声音ID列表&#10;- 构建不同集数组合的支付选项（本集、后10集、后20集等）&#10;- 支持最多购买50集的限制规则&#10;-优化getTrackListByAlbumId方法注释，移除冗余业务说明&#10;- 在bootstrap.properties中配置网络首选项解决Nacos注册问题&#10;- 在UserInfoApiController中新增findUserPaidTrackList接口- 实现根据专辑ID查询用户已购买声音ID列表的功能&#10;- 扩展UserInfoService及其实现类支持查询用户购买记录&#10;- 更新Feign客户端接口与降级实现以支持新功能调用" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(album): 实现用户声音分集购买支付列表功能&#10;&#10;- 在TrackInfoApiController中新增findUserTrackPaidList接口&#10;- 实现根据声音ID获取后续未购买声音分集支付信息的逻辑&#10;- 添加TrackInfoService接口及其实现类中的findUserTrackPaidList方法&#10;- 集成用户购买记录Feign客户端调用获取已购声音ID列表&#10;- 构建不同集数组合的支付选项（本集、后10集、后20集等）&#10;- 支持最多购买50集的限制规则&#10;-优化getTrackListByAlbumId方法注释，移除冗余业务说明&#10;- 在bootstrap.properties中配置网络首选项解决Nacos注册问题&#10;- 在UserInfoApiController中新增findUserPaidTrackList接口- 实现根据专辑ID查询用户已购买声音ID列表的功能&#10;- 扩展UserInfoService及其实现类支持查询用户购买记录&#10;- 更新Feign客户端接口与降级实现以支持新功能调用" />
+    <MESSAGE value="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

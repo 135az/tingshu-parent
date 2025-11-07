@@ -28,4 +28,13 @@ public interface TrackInfoFeignClient {
      */
     @GetMapping("api/album/trackInfo/findPaidTrackInfoList/{trackId}/{trackCount}")
     Result<List<TrackInfo>> findPaidTrackInfoList(@PathVariable("trackId") Long trackId, @PathVariable("trackCount") Integer trackCount);
+
+    /**
+     * 根据id查询声音信息
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("api/album/trackInfo/getTrackInfo/{id}")
+    Result<TrackInfo> getTrackInfo(@PathVariable("id") Long id);
 }

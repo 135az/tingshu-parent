@@ -2,6 +2,7 @@ package com.atguigu.tingshu.account.receiver;
 
 import com.atguigu.tingshu.account.service.UserAccountService;
 import com.atguigu.tingshu.common.constant.KafkaConstant;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -33,5 +34,35 @@ public class AccountReceiver {
         }
         //  添加账户信息
         userAccountService.addUserAccount(userId);
+    }
+
+    /**
+     * 扣减锁定金额
+     *
+     * @param record
+     */
+    @KafkaListener(topics = KafkaConstant.QUEUE_ACCOUNT_MINUS)
+    public void minus(ConsumerRecord<String, String> record) {
+        String orderNo = record.value();
+        if (StringUtils.isEmpty(orderNo)) {
+            return;
+        }
+        // 扣减锁定金额
+        userAccountService.minus(orderNo);
+    }
+
+    /**
+     * 解锁锁定金额
+     *
+     * @param record
+     */
+    @KafkaListener(topics = KafkaConstant.QUEUE_ACCOUNT_UNLOCK)
+    public void unlock(ConsumerRecord<String, String> record) {
+        String orderNo = record.value();
+        if (StringUtils.isEmpty(orderNo)) {
+            return;
+        }
+        //  调用解除锁定
+        userAccountService.unlock(orderNo);
     }
 }
