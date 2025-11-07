@@ -4,32 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作">
-      <change afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/handle/RedisDelayHandle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/receiver/UserReceiver.java" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(account): 实现账户金额锁定与扣减功能&#10;&#10;- 新增账户余额检查与锁定接口&#10;- 实现账户金额扣减与解锁逻辑&#10;- 添加 Kafka 消息监听处理账户操作&#10;- 完善账户相关 Mapper 和 Service 方法&#10;-优化账户操作的幂等性与并发控制">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/UserAccountFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/UserAccountFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/impl/UserAccountDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-account-client/src/main/java/com/atguigu/tingshu/account/client/impl/UserAccountDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/TrackInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/TrackInfoFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/TrackInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-album-client/src/main/java/com/atguigu/tingshu/album/client/impl/TrackInfoDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-order-client/src/main/java/com/atguigu/tingshu/order/client/OrderInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-order-client/src/main/java/com/atguigu/tingshu/order/client/OrderInfoFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service-client/service-order-client/src/main/java/com/atguigu/tingshu/order/client/impl/OrderInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-order-client/src/main/java/com/atguigu/tingshu/order/client/impl/OrderInfoDegradeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/RechargeInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/RechargeInfoApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/UserAccountApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountDetailMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/mapper/UserAccountMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/receiver/AccountReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/receiver/AccountReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/RechargeInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/RechargeInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/UserAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/RechargeInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/RechargeInfoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountDetailMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountDetailMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/resources/mapper/UserAccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/api/OrderInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/mapper/OrderInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/mapper/OrderInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/OrderInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/resources/mapper/OrderInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/resources/mapper/OrderInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/api/WxPayApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/api/WxPayApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/service/WxPayService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/service/WxPayService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/service/impl/WxPayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-payment/src/main/java/com/atguigu/tingshu/payment/service/impl/WxPayServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-payment/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-payment/src/main/resources/bootstrap.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,55 +87,55 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Maven.server-gateway [install].executor": "Run",
-    "Maven.service-album [install].executor": "Run",
-    "Maven.tingshu-parent [clean].executor": "Run",
-    "Maven.tingshu-parent [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.CDCApplicaiton.executor": "Run",
-    "Spring Boot.ServerGatewayApplication.executor": "Run",
-    "Spring Boot.ServiceAccountApplication.executor": "Run",
-    "Spring Boot.ServiceAlbumApplication.executor": "Run",
-    "Spring Boot.ServiceOrderApplication.executor": "Run",
-    "Spring Boot.ServiceSearchApplication.executor": "Run",
-    "Spring Boot.ServiceUserApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/0628project/tingshu-parent",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/IdeaProjects/tingshu-parent/service/service-cdc/src/main/java/com/atguigu/tingshu/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "rearrange.code.on.save": "true",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.server-gateway [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.service-album [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tingshu-parent [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tingshu-parent [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CDCApplicaiton.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServerGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceAccountApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceAlbumApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceOrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceSearchApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceUserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/0628project/tingshu-parent&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/tingshu-parent/service/service-cdc/src/main/java/com/atguigu/tingshu/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -319,7 +312,8 @@
       <workItem from="1762086900835" duration="7000" />
       <workItem from="1762223966518" duration="37481000" />
       <workItem from="1762409983858" duration="2787000" />
-      <workItem from="1762412975353" duration="22393000" />
+      <workItem from="1762412975353" duration="25113000" />
+      <workItem from="1762504916824" duration="4092000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -593,7 +587,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762424901128</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="feat(account): 实现账户金额锁定与扣减功能&#10;&#10;- 新增账户余额检查与锁定接口&#10;- 实现账户金额扣减与解锁逻辑&#10;- 添加 Kafka 消息监听处理账户操作&#10;- 完善账户相关 Mapper 和 Service 方法&#10;-优化账户操作的幂等性与并发控制">
+      <option name="closed" value="true" />
+      <created>1762487903656</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1762487903656</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,7 +615,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 新增用户声音分页查询功能- 在TrackInfoApiController中添加findUserTrackPage接口&#10;- 实现根据用户ID分页查询声音列表的业务逻辑- 添加TrackInfoQuery查询参数类支持条件过滤&#10;- 在TrackInfoMapper中定义selectUserTrackPage方法&#10;- 编写对应的XML SQL查询语句支持动态条件和统计字段&#10;-通过TrackInfoService定义并实现分页查询方法- 集成MyBatis Plus分页插件完成数据分页处理&#10;- 使用Swagger注解完善接口文档说明- 添加inspection profiles规则提升代码质量检查&#10;- 更新SQL方言映射文件支持TrackInfoMapper.xml" />
     <MESSAGE value="feat(album): 新增声音信息获取与修改接口&#10;&#10;- 在TrackInfoApiController中添加getTrackInfo接口&#10;- 实现根据ID获取声音详细信息的功能- 添加updateTrackInfo接口支持声音信息修改- 在TrackInfoService中定义updateTrackInfo方法&#10;- 实现声音信息更新逻辑，包括媒体文件校验&#10;- 集成VOD服务验证媒体文件ID有效性- 使用BeanUtils拷贝属性并更新声音数据&#10;- 添加异常处理机制确保数据一致性&#10;- 集成Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(album): 新增声音删除功能&#10;&#10;- 在TrackInfoApiController中添加removeTrackInfo接口&#10;- 实现根据ID删除声音信息的业务逻辑- 添加事务管理确保数据一致性- 删除声音统计信息并更新专辑声音总数&#10;-重新计算声音序号并删除对应媒体文件&#10;- 在TrackInfoService中定义removeTrackInfo方法&#10;- 在VodService中添加removeTrack方法支持音频删除&#10;- 集成腾讯云VOD SDK实现媒体文件删除功能&#10;- 使用Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(user): 实现微信授权登录与用户信息管理- 添加微信登录接口，通过code获取openId并创建或查询用户- 实现用户信息初始化及账户创建的消息发送机制&#10;- 引入GuiGuLogin注解及切面实现登录状态校注入验与用户信息&#10;- 添加获取与更新用户信息接口，支持昵称与头像修改- 配置微信小程序相关参数及服务Bean&#10;- 调整Nacos配置中心地址，统一服务注册发现配置&#10;- 完善用户账户服务，支持用户注册时自动创建账户-优化Kafka消息发送逻辑，增加异步回调与日志记录- 补充.gitignore文件，排除IDE与构建产物&#10;- 更新ResultCodeEnum与AuthContextHolder类的文档注释" />
@@ -638,7 +639,8 @@
     <MESSAGE value="feat(account): 实现用户账户余额查询功能&#10;&#10;- 新增获取账户可用余额的API接口&#10;- 实现根据用户ID查询账户余额的服务逻辑&#10;- 添加用户账户信息的数据访问方法&#10;- 集成认证上下文获取当前用户ID&#10;- 使用BigDecimal类型处理金额精度问题&#10;- 配置接口Swagger文档注解说明&#10;- 添加GuiGuLogin注解实现接口权限校验" />
     <MESSAGE value="feat(album): 实现用户声音分集购买支付列表功能&#10;&#10;- 在TrackInfoApiController中新增findUserTrackPaidList接口&#10;- 实现根据声音ID获取后续未购买声音分集支付信息的逻辑&#10;- 添加TrackInfoService接口及其实现类中的findUserTrackPaidList方法&#10;- 集成用户购买记录Feign客户端调用获取已购声音ID列表&#10;- 构建不同集数组合的支付选项（本集、后10集、后20集等）&#10;- 支持最多购买50集的限制规则&#10;-优化getTrackListByAlbumId方法注释，移除冗余业务说明&#10;- 在bootstrap.properties中配置网络首选项解决Nacos注册问题&#10;- 在UserInfoApiController中新增findUserPaidTrackList接口- 实现根据专辑ID查询用户已购买声音ID列表的功能&#10;- 扩展UserInfoService及其实现类支持查询用户购买记录&#10;- 更新Feign客户端接口与降级实现以支持新功能调用" />
     <MESSAGE value="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作" />
+    <MESSAGE value="feat(account): 实现账户金额锁定与扣减功能&#10;&#10;- 新增账户余额检查与锁定接口&#10;- 实现账户金额扣减与解锁逻辑&#10;- 添加 Kafka 消息监听处理账户操作&#10;- 完善账户相关 Mapper 和 Service 方法&#10;-优化账户操作的幂等性与并发控制" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(account): 实现账户金额锁定与扣减功能&#10;&#10;- 新增账户余额检查与锁定接口&#10;- 实现账户金额扣减与解锁逻辑&#10;- 添加 Kafka 消息监听处理账户操作&#10;- 完善账户相关 Mapper 和 Service 方法&#10;-优化账户操作的幂等性与并发控制" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

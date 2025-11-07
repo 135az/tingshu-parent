@@ -45,4 +45,13 @@ public interface UserAccountMapper extends BaseMapper<UserAccount> {
      * @return
      */
     int unLock(Long userId, BigDecimal amount);
+
+    /**
+     * 添加用户账户余额
+     *
+     * @param userId
+     * @param amount
+     * @return
+     */
+    void add(@Param("userId") Long userId, @Param("amount") BigDecimal amount);
 }
