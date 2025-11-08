@@ -95,5 +95,17 @@ public class UserInfoApiController {
         return Result.ok(trackIdList);
     }
 
+    /**
+     * 更新Vip到期失效状态
+     *
+     * @return
+     */
+    @Operation(summary = "更新Vip到期失效状态")
+    @GetMapping("updateVipExpireStatus")
+    public Result updateVipExpireStatus() {
+        userInfoService.updateVipExpireStatus();
+        return Result.ok();
+    }
+
 }
 

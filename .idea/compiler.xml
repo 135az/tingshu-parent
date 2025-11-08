@@ -8,29 +8,33 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-system-client" />
-        <module name="server-gateway" />
+        <module name="xxl-job-core" />
         <module name="service-album-client" />
-        <module name="common-util" />
-        <module name="service-search-client" />
         <module name="kafka-util" />
-        <module name="service-album" />
         <module name="service-order-client" />
         <module name="service-user-client" />
-        <module name="common-log" />
         <module name="service-account-client" />
         <module name="service-order" />
-        <module name="service-util" />
-        <module name="service-live" />
         <module name="service-user" />
-        <module name="service-cdc" />
-        <module name="service-search" />
-        <module name="spring-security" />
         <module name="service-dispatch" />
         <module name="model" />
         <module name="service-system" />
+        <module name="xxl-job-admin" />
+        <module name="xxl-job-executor-sample-springboot" />
+        <module name="service-payment" />
+        <module name="server-gateway" />
+        <module name="common-util" />
+        <module name="service-search-client" />
+        <module name="service-album" />
+        <module name="xxl-job-executor-sample-frameless" />
+        <module name="common-log" />
+        <module name="service-util" />
+        <module name="service-live" />
+        <module name="service-cdc" />
+        <module name="service-search" />
+        <module name="spring-security" />
         <module name="service-comment" />
         <module name="service-account" />
-        <module name="service-payment" />
       </profile>
     </annotationProcessing>
   </component>

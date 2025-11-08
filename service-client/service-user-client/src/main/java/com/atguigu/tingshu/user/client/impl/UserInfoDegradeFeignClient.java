@@ -31,4 +31,9 @@ public class UserInfoDegradeFeignClient implements UserInfoFeignClient {
     public Result<List<Long>> findUserPaidTrackList(Long albumId) {
         return null;
     }
+
+    @Override
+    public Result updateVipExpireStatus() {
+        return null;
+    }
 }

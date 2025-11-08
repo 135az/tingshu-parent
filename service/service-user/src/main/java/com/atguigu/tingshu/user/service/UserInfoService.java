@@ -52,4 +52,9 @@ public interface UserInfoService extends IService<UserInfo> {
      * @param userPaidRecordVo
      */
     void updateUserPaidRecord(UserPaidRecordVo userPaidRecordVo);
+
+    /**
+     * 更新用户VIP到期状态
+     */
+    void updateVipExpireStatus();
 }

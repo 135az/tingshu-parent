@@ -28,7 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -215,6 +219,28 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
         } else {
             log.info("无该项目类型：{}", JSON.toJSONString(userPaidRecordVo));
+        }
+    }
+
+    @Override
+    public void updateVipExpireStatus() {
+        //	获取到当前时间
+        //	localDateTime 与 Date 转换
+        Instant instant = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant();
+        Date date = Date.from(instant);
+        LambdaQueryWrapper<UserInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserInfo::getIsVip, 1);
+        wrapper.select(UserInfo::getId);
+        wrapper.lt(UserInfo::getVipExpireTime, date);
+        //	查询到当前过期用户列表
+        List<UserInfo> userInfoList = this.list(wrapper);
+        //	判断当前集合不为空
+        if (!CollectionUtils.isEmpty(userInfoList)) {
+            for (UserInfo userInfo : userInfoList) {
+                userInfo.setIsVip(0);
+            }
+            //	批量更新
+            this.saveOrUpdateBatch(userInfoList);
         }
     }
 }
