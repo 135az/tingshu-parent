@@ -43,8 +43,7 @@ public class FileUploadServiceImpl implements FileUploadService {
                     .build();
 
             // Make 'asiatrip' bucket if not exist.
-            boolean found =
-                    false;
+            boolean found;
             found = minioClient.bucketExists(BucketExistsArgs.builder()
                     .bucket(minioConstantProperties.getBucketName())
                     .build()

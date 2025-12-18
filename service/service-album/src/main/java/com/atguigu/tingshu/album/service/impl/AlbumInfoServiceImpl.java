@@ -22,11 +22,11 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.Nullable;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,29 +37,17 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo> implements AlbumInfoService {
 
-    @Autowired
-    private AlbumInfoMapper albumInfoMapper;
-
-    @Autowired
-    private AlbumAttributeValueMapper albumAttributeValueMapper;
-
-    @Autowired
-    private AlbumStatMapper albumStatMapper;
-
-    @Autowired
-    private AlbumAttributeValueService albumAttributeValueService;
-
-    @Autowired
-    private KafkaService kafkaService;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedissonClient redissonClient;
+    private final AlbumInfoMapper albumInfoMapper;
+    private final AlbumAttributeValueMapper albumAttributeValueMapper;
+    private final AlbumStatMapper albumStatMapper;
+    private final AlbumAttributeValueService albumAttributeValueService;
+    private final KafkaService kafkaService;
+    private final RedisTemplate redisTemplate;
+    private final RedissonClient redissonClient;
 
 
     /**
@@ -142,15 +130,9 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         // 删除专辑信息
         this.removeById(id);
         // 删除专辑属性值
-        albumAttributeValueMapper.delete(
-                new LambdaQueryWrapper<AlbumAttributeValue>()
-                        .eq(AlbumAttributeValue::getAlbumId, id)
-        );
+        albumAttributeValueMapper.delete(new LambdaQueryWrapper<AlbumAttributeValue>().eq(AlbumAttributeValue::getAlbumId, id));
         // 删除专辑统计数据
-        albumStatMapper.delete(
-                new LambdaQueryWrapper<AlbumStat>()
-                        .eq(AlbumStat::getAlbumId, id)
-        );
+        albumStatMapper.delete(new LambdaQueryWrapper<AlbumStat>().eq(AlbumStat::getAlbumId, id));
         // 下架
         kafkaService.sendMessage(KafkaConstant.QUEUE_ALBUM_LOWER, String.valueOf(id));
     }

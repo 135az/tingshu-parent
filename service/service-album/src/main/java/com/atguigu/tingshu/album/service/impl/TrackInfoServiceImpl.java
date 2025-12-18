@@ -23,8 +23,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -39,23 +39,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-@SuppressWarnings({"unchecked", "rawtypes"})
+@RequiredArgsConstructor
 public class TrackInfoServiceImpl extends ServiceImpl<TrackInfoMapper, TrackInfo> implements TrackInfoService {
 
-    @Autowired
-    private TrackInfoMapper trackInfoMapper;
-
-    @Autowired
-    private VodService vodService;
-
-    @Autowired
-    private AlbumInfoService albumInfoService;
-
-    @Autowired
-    private TrackStatMapper trackStatMapper;
-
-    @Autowired
-    private UserInfoFeignClient userInfoFeignClient;
+    private final TrackInfoMapper trackInfoMapper;
+    private final VodService vodService;
+    private final AlbumInfoService albumInfoService;
+    private final TrackStatMapper trackStatMapper;
+    private final UserInfoFeignClient userInfoFeignClient;
 
     @Override
     @Transactional(rollbackFor = Exception.class)

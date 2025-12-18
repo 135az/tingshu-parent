@@ -2,6 +2,8 @@ package com.atguigu.tingshu.common.enums;
 
 /**
  * 业务操作类型
+ *
+ * @author yjz
  */
 public enum BusinessType {
     /**

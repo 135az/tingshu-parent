@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(account): 实现用户充值与消费记录功能&#10;- 新增充值信息API控制器，支持根据订单号查询充值信息&#10;- 实现用户充值提交接口，生成充值订单并返回订单号&#10;- 添加账户充值成功后的处理逻辑，更新账户余额与交易明细&#10;- 实现用户充值记录与消费记录的分页查询接口- 完善账户明细Mapper与Service层，支持按交易类型筛选记录&#10;-优化账户金额增加逻辑，确保操作幂等性与数据一致性&#10;- 配置Kafka监听器，处理充值支付成功的异步通知消息&#10;- 调整Nacos配置中心地址，统一服务注册与配置管理入口">
-      <change afterPath="$PROJECT_DIR$/service/service-dispatch/src/main/java/com/atguigu/tingshu/dispatch/config/XxlJobConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="feat(dispatch): 集成XXL-JOB实现定时任务调度&#10;&#10;- 配置XXL-JOB执行器参数，包括地址日、端口、- 添加志路径等XXL-JOB核心依赖模块到编译配置- 实现定时任务处理器DispatchJobHandler- 新增更新排行榜定时任务updateLatelyAlbumRankingJob&#10;- 新增更新VIP过期状态定时任务updateVipExpireStatusJob&#10;- 集成SearchFeignClient与UserInfoFeignClient调用远程服务- 添加定时任务日志记录功能，记录执行状态与耗时- 调整Nacos配置中心地址为192.168.200.130:8848- 配置项目编码与模块依赖关系&#10;- 添加XXL-JOB管理端与执行器启动配置">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-search-client/src/main/java/com/atguigu/tingshu/search/client/SearchFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-search-client/src/main/java/com/atguigu/tingshu/search/client/SearchFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-search-client/src/main/java/com/atguigu/tingshu/search/client/impl/SearchDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-search-client/src/main/java/com/atguigu/tingshu/search/client/impl/SearchDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/UserInfoFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/service-client/service-user-client/src/main/java/com/atguigu/tingshu/user/client/impl/UserInfoDegradeFeignClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-dispatch/src/main/java/com/atguigu/tingshu/dispatch/job/DispatchJobHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-dispatch/src/main/java/com/atguigu/tingshu/dispatch/job/DispatchJobHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-dispatch/src/main/resources/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-dispatch/src/main/resources/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/UserInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/UserInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/annotation/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/annotation/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/aspect/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/aspect/LogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/enums/BusinessType.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/common-log/src/main/java/com/atguigu/tingshu/common/enums/BusinessType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/AlbumInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/FileUploadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/FileUploadServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,58 +77,59 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Maven.server-gateway [install].executor": "Run",
-    "Maven.service-album [install].executor": "Run",
-    "Maven.tingshu-parent [clean].executor": "Run",
-    "Maven.tingshu-parent [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.CDCApplicaiton.executor": "Run",
-    "Spring Boot.ServerGatewayApplication.executor": "Run",
-    "Spring Boot.ServiceAccountApplication.executor": "Run",
-    "Spring Boot.ServiceAlbumApplication.executor": "Run",
-    "Spring Boot.ServiceDispatchApplication.executor": "Run",
-    "Spring Boot.ServiceOrderApplication.executor": "Run",
-    "Spring Boot.ServiceSearchApplication.executor": "Run",
-    "Spring Boot.ServiceUserApplication.executor": "Run",
-    "Spring Boot.XxlJobAdminApplication.executor": "Run",
-    "Spring Boot.XxlJobExecutorApplication.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/0628project/tingshu-parent",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "D:/IdeaProjects/tingshu-parent/service/service-cdc/src/main/java/com/atguigu/tingshu/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "rearrange.code.on.save": "true",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.server-gateway [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.service-album [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tingshu-parent [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.tingshu-parent [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CDCApplicaiton.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServerGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceAccountApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceAlbumApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceDispatchApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceOrderApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceSearchApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceUserApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.XxlJobAdminApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.XxlJobExecutorApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/0628project/tingshu-parent&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;D:/IdeaProjects/tingshu-parent/service/service-cdc/src/main/java/com/atguigu/tingshu/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -165,6 +160,7 @@
               <entry key="ServiceOrderApplication" value="STOPPED" />
               <entry key="ServiceSearchApplication" value="STOPPED" />
               <entry key="ServiceUserApplication" value="STOPPED" />
+              <entry key="XxlJobAdminApplication" value="STOPPED" />
               <entry key="XxlJobExecutorApplication" value="STOPPED" />
             </map>
           </value>
@@ -278,8 +274,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.XxlJobAdminApplication" />
-      <item itemvalue="Spring Boot.XxlJobExecutorApplication" />
       <item itemvalue="Spring Boot.ServerGatewayApplication" />
       <item itemvalue="Spring Boot.ServiceAccountApplication" />
       <item itemvalue="Spring Boot.ServiceAlbumApplication" />
@@ -291,6 +285,8 @@
       <item itemvalue="Spring Boot.ServiceSearchApplication" />
       <item itemvalue="Spring Boot.ServiceSystemApplication" />
       <item itemvalue="Spring Boot.ServiceUserApplication" />
+      <item itemvalue="Spring Boot.XxlJobAdminApplication" />
+      <item itemvalue="Spring Boot.XxlJobExecutorApplication" />
       <item itemvalue="Spring Boot.CDCApplicaiton" />
     </list>
     <recent_temporary>
@@ -302,8 +298,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+        <option value="bundled-js-predefined-d6986cc7102b-c7e53b3be11b-JavaScript-IU-253.28294.334" />
       </set>
     </attachedChunks>
   </component>
@@ -330,7 +326,18 @@
       <workItem from="1762223966518" duration="37481000" />
       <workItem from="1762409983858" duration="2787000" />
       <workItem from="1762412975353" duration="25113000" />
-      <workItem from="1762504916824" duration="12781000" />
+      <workItem from="1762504916824" duration="13957000" />
+      <workItem from="1762773592957" duration="4000" />
+      <workItem from="1764748063747" duration="5398000" />
+      <workItem from="1764904259396" duration="413000" />
+      <workItem from="1764904698836" duration="94000" />
+      <workItem from="1765264654052" duration="8549000" />
+      <workItem from="1765286346731" duration="47000" />
+      <workItem from="1765286416663" duration="456000" />
+      <workItem from="1765286887452" duration="2236000" />
+      <workItem from="1765352194206" duration="5165000" />
+      <workItem from="1765435425442" duration="2169000" />
+      <workItem from="1766025707519" duration="6058000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -620,7 +627,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762510410150</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="feat(dispatch): 集成XXL-JOB实现定时任务调度&#10;&#10;- 配置XXL-JOB执行器参数，包括地址日、端口、- 添加志路径等XXL-JOB核心依赖模块到编译配置- 实现定时任务处理器DispatchJobHandler- 新增更新排行榜定时任务updateLatelyAlbumRankingJob&#10;- 新增更新VIP过期状态定时任务updateVipExpireStatusJob&#10;- 集成SearchFeignClient与UserInfoFeignClient调用远程服务- 添加定时任务日志记录功能，记录执行状态与耗时- 调整Nacos配置中心地址为192.168.200.130:8848- 配置项目编码与模块依赖关系&#10;- 添加XXL-JOB管理端与执行器启动配置">
+      <option name="closed" value="true" />
+      <created>1762589037055</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1762589037055</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +655,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(album): 新增声音删除功能&#10;&#10;- 在TrackInfoApiController中添加removeTrackInfo接口&#10;- 实现根据ID删除声音信息的业务逻辑- 添加事务管理确保数据一致性- 删除声音统计信息并更新专辑声音总数&#10;-重新计算声音序号并删除对应媒体文件&#10;- 在TrackInfoService中定义removeTrackInfo方法&#10;- 在VodService中添加removeTrack方法支持音频删除&#10;- 集成腾讯云VOD SDK实现媒体文件删除功能&#10;- 使用Swagger注解完善接口文档说明" />
     <MESSAGE value="feat(user): 实现微信授权登录与用户信息管理- 添加微信登录接口，通过code获取openId并创建或查询用户- 实现用户信息初始化及账户创建的消息发送机制&#10;- 引入GuiGuLogin注解及切面实现登录状态校注入验与用户信息&#10;- 添加获取与更新用户信息接口，支持昵称与头像修改- 配置微信小程序相关参数及服务Bean&#10;- 调整Nacos配置中心地址，统一服务注册发现配置&#10;- 完善用户账户服务，支持用户注册时自动创建账户-优化Kafka消息发送逻辑，增加异步回调与日志记录- 补充.gitignore文件，排除IDE与构建产物&#10;- 更新ResultCodeEnum与AuthContextHolder类的文档注释" />
     <MESSAGE value="feat(search): 实现专辑上下架功能&#10;&#10;- 新增专辑索引仓库AlbumIndexRepository&#10;- 实现专辑上架接口，同步专辑、属性、分类及用户信息到ES&#10;- 实现专辑下架接口，从ES中删除专辑索引&#10;- 添加Feign客户端支持专辑、分类、用户信息远程调用&#10;- 完善专辑属性值查询接口及相关降级实现- 调整Nacos配置中心地址为192.168.200.130:8848" />
     <MESSAGE value="feat(search):优化专辑上架异步处理逻辑- 使用CompletableFuture异步编排获取专辑信息&#10;- 并行处理分类、属性及用户数据的远程调用-优化热度值计算逻辑，使用固定范围随机数- 调整播放量、订阅量等统计字段的生成策略&#10;- 完善多任务组合等待与索引数据保存流程" />
@@ -665,7 +679,8 @@
     <MESSAGE value="feat(order): 实现声音分集购买订单处理功能&#10;&#10;- 引入TrackInfoFeignClient用于获取声音信息- 实现声音分集购买逻辑，支持单集与多集购买&#10;- 根据声音ID获取专辑信息并计算订单金额- 构建声音订单明细列表，包含名称、价格与封面&#10;-优化订单签名生成逻辑，移除调试注释&#10;- 添加stream工具类支持集合转换操作" />
     <MESSAGE value="feat(account): 实现账户金额锁定与扣减功能&#10;&#10;- 新增账户余额检查与锁定接口&#10;- 实现账户金额扣减与解锁逻辑&#10;- 添加 Kafka 消息监听处理账户操作&#10;- 完善账户相关 Mapper 和 Service 方法&#10;-优化账户操作的幂等性与并发控制" />
     <MESSAGE value="feat(account): 实现用户充值与消费记录功能&#10;- 新增充值信息API控制器，支持根据订单号查询充值信息&#10;- 实现用户充值提交接口，生成充值订单并返回订单号&#10;- 添加账户充值成功后的处理逻辑，更新账户余额与交易明细&#10;- 实现用户充值记录与消费记录的分页查询接口- 完善账户明细Mapper与Service层，支持按交易类型筛选记录&#10;-优化账户金额增加逻辑，确保操作幂等性与数据一致性&#10;- 配置Kafka监听器，处理充值支付成功的异步通知消息&#10;- 调整Nacos配置中心地址，统一服务注册与配置管理入口" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(account): 实现用户充值与消费记录功能&#10;- 新增充值信息API控制器，支持根据订单号查询充值信息&#10;- 实现用户充值提交接口，生成充值订单并返回订单号&#10;- 添加账户充值成功后的处理逻辑，更新账户余额与交易明细&#10;- 实现用户充值记录与消费记录的分页查询接口- 完善账户明细Mapper与Service层，支持按交易类型筛选记录&#10;-优化账户金额增加逻辑，确保操作幂等性与数据一致性&#10;- 配置Kafka监听器，处理充值支付成功的异步通知消息&#10;- 调整Nacos配置中心地址，统一服务注册与配置管理入口" />
+    <MESSAGE value="feat(dispatch): 集成XXL-JOB实现定时任务调度&#10;&#10;- 配置XXL-JOB执行器参数，包括地址日、端口、- 添加志路径等XXL-JOB核心依赖模块到编译配置- 实现定时任务处理器DispatchJobHandler- 新增更新排行榜定时任务updateLatelyAlbumRankingJob&#10;- 新增更新VIP过期状态定时任务updateVipExpireStatusJob&#10;- 集成SearchFeignClient与UserInfoFeignClient调用远程服务- 添加定时任务日志记录功能，记录执行状态与耗时- 调整Nacos配置中心地址为192.168.200.130:8848- 配置项目编码与模块依赖关系&#10;- 添加XXL-JOB管理端与执行器启动配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(dispatch): 集成XXL-JOB实现定时任务调度&#10;&#10;- 配置XXL-JOB执行器参数，包括地址日、端口、- 添加志路径等XXL-JOB核心依赖模块到编译配置- 实现定时任务处理器DispatchJobHandler- 新增更新排行榜定时任务updateLatelyAlbumRankingJob&#10;- 新增更新VIP过期状态定时任务updateVipExpireStatusJob&#10;- 集成SearchFeignClient与UserInfoFeignClient调用远程服务- 添加定时任务日志记录功能，记录执行状态与耗时- 调整Nacos配置中心地址为192.168.200.130:8848- 配置项目编码与模块依赖关系&#10;- 添加XXL-JOB管理端与执行器启动配置" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
