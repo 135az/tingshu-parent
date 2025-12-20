@@ -8,20 +8,20 @@ import com.atguigu.tingshu.model.account.RechargeInfo;
 import com.atguigu.tingshu.vo.account.RechargeInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+/**
+ * @author yjz
+ */
 @Service
-@SuppressWarnings({"unchecked", "rawtypes"})
+@RequiredArgsConstructor
 public class RechargeInfoServiceImpl extends ServiceImpl<RechargeInfoMapper, RechargeInfo> implements RechargeInfoService {
 
-    @Autowired
-    private RechargeInfoMapper rechargeInfoMapper;
-
-    @Autowired
-    private UserAccountService userAccountService;
+    private final RechargeInfoMapper rechargeInfoMapper;
+    private final UserAccountService userAccountService;
 
     @Override
     public RechargeInfo getRechargeInfoByOrderNo(String orderNo) {

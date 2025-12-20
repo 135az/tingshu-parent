@@ -17,9 +17,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,17 +29,13 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserAccount> implements UserAccountService {
 
-    @Autowired
-    private UserAccountMapper userAccountMapper;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private UserAccountDetailMapper userAccountDetailMapper;
+    private final UserAccountMapper userAccountMapper;
+    private final RedisTemplate redisTemplate;
+    private final UserAccountDetailMapper userAccountDetailMapper;
 
     /**
      * 添加用户账户

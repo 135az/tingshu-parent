@@ -35,11 +35,11 @@ import com.atguigu.tingshu.user.client.UserInfoFeignClient;
 import com.atguigu.tingshu.vo.search.AlbumInfoIndexVo;
 import com.atguigu.tingshu.vo.search.AlbumSearchResponseVo;
 import com.atguigu.tingshu.vo.user.UserInfoVo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.suggest.Completion;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -66,32 +66,18 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class SearchServiceImpl implements SearchService {
 
-    @Autowired
-    private AlbumInfoFeignClient albumInfoFeignClient;
-
-    @Autowired
-    private CategoryFeignClient categoryFeignClient;
-
-    @Autowired
-    private UserInfoFeignClient userInfoFeignClient;
-
-    @Autowired
-    private AlbumIndexRepository albumIndexRepository;
-
-    @Autowired
-    private ElasticsearchClient elasticsearchClient;
-
-    @Autowired
-    private SuggestIndexRepository suggestIndexRepository;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private RedissonClient redissonClient;
+    private final AlbumInfoFeignClient albumInfoFeignClient;
+    private final CategoryFeignClient categoryFeignClient;
+    private final UserInfoFeignClient userInfoFeignClient;
+    private final AlbumIndexRepository albumIndexRepository;
+    private final ElasticsearchClient elasticsearchClient;
+    private final SuggestIndexRepository suggestIndexRepository;
+    private final RedisTemplate redisTemplate;
+    private final RedissonClient redissonClient;
 
     /**
      * 专辑上架

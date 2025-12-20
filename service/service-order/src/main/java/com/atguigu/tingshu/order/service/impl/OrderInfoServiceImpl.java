@@ -35,12 +35,12 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBlockingDeque;
 import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
@@ -61,41 +61,21 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo> implements OrderInfoService {
 
-    @Autowired
-    private OrderInfoMapper orderInfoMapper;
-
-    @Autowired
-    private UserInfoFeignClient userInfoFeignClient;
-
-    @Autowired
-    private AlbumInfoFeignClient albumInfoFeignClient;
-
-    @Autowired
-    private VipServiceConfigFeignClient vipServiceConfigFeignClient;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private TrackInfoFeignClient trackInfoFeignClient;
-
-    @Autowired
-    private UserAccountFeignClient userAccountFeignClient;
-
-    @Autowired
-    private KafkaService kafkaService;
-
-    @Autowired
-    private OrderDetailMapper orderDetailMapper;
-
-    @Autowired
-    private OrderDerateMapper orderDerateMapper;
-
-    @Autowired
-    private RedissonClient redissonClient;
+    private final OrderInfoMapper orderInfoMapper;
+    private final UserInfoFeignClient userInfoFeignClient;
+    private final AlbumInfoFeignClient albumInfoFeignClient;
+    private final VipServiceConfigFeignClient vipServiceConfigFeignClient;
+    private final RedisTemplate redisTemplate;
+    private final TrackInfoFeignClient trackInfoFeignClient;
+    private final UserAccountFeignClient userAccountFeignClient;
+    private final KafkaService kafkaService;
+    private final OrderDetailMapper orderDetailMapper;
+    private final OrderDerateMapper orderDerateMapper;
+    private final RedissonClient redissonClient;
 
 
     @Override

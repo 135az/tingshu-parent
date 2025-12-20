@@ -57,12 +57,11 @@ public class TrackInfoServiceImpl extends ServiceImpl<TrackInfoMapper, TrackInfo
         trackInfo.setStatus(SystemConstant.TRACK_STATUS_PASS);
         trackInfo.setUserId(userId);
         // 获取上一条声音
-        TrackInfo preTrackInfo = this.getOne(
-                new LambdaQueryWrapper<TrackInfo>()
-                        .eq(TrackInfo::getAlbumId, trackInfoVo.getAlbumId())
-                        .orderByDesc(TrackInfo::getId)
-                        .select(TrackInfo::getOrderNum)
-                        .last(" limit 1 ")
+        TrackInfo preTrackInfo = this.getOne(new LambdaQueryWrapper<TrackInfo>()
+                .eq(TrackInfo::getAlbumId, trackInfoVo.getAlbumId())
+                .orderByDesc(TrackInfo::getId)
+                .select(TrackInfo::getOrderNum)
+                .last(" limit 1 ")
         );
         int orderNum = 1;
         if (null != preTrackInfo) {

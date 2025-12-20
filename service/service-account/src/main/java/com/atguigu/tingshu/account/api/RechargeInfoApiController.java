@@ -21,7 +21,7 @@ import java.util.HashMap;
 @Tag(name = "充值管理")
 @RestController
 @RequestMapping("api/account/rechargeInfo")
-@SuppressWarnings({"unchecked", "rawtypes"})
+@SuppressWarnings({"rawtypes"})
 public class RechargeInfoApiController {
 
     @Autowired

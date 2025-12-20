@@ -21,10 +21,10 @@ import com.atguigu.tingshu.vo.user.UserInfoVo;
 import com.atguigu.tingshu.vo.user.UserPaidRecordVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -41,29 +41,17 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
 
-    @Autowired
-    private UserInfoMapper userInfoMapper;
-
-    @Autowired
-    private UserPaidAlbumMapper userPaidAlbumMapper;
-
-    @Autowired
-    private UserPaidTrackService userPaidTrackService;
-
-    @Autowired
-    private UserPaidTrackMapper userPaidTrackMapper;
-
-    @Autowired
-    private TrackInfoFeignClient trackInfoFeignClient;
-
-    @Autowired
-    private UserVipServiceMapper userVipServiceMapper;
-
-    @Autowired
-    private VipServiceConfigMapper vipServiceConfigMapper;
+    private final UserInfoMapper userInfoMapper;
+    private final UserPaidAlbumMapper userPaidAlbumMapper;
+    private final UserPaidTrackService userPaidTrackService;
+    private final UserPaidTrackMapper userPaidTrackMapper;
+    private final TrackInfoFeignClient trackInfoFeignClient;
+    private final UserVipServiceMapper userVipServiceMapper;
+    private final VipServiceConfigMapper vipServiceConfigMapper;
 
     @Override
     public UserInfoVo getUserInfoVoByUserId(Long userId) {

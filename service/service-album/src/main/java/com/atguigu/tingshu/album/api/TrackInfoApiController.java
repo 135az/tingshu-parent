@@ -15,7 +15,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,14 +36,12 @@ import java.util.Map;
 @Tag(name = "声音管理")
 @RestController
 @RequestMapping("api/album/trackInfo")
-@SuppressWarnings({"unchecked", "rawtypes"})
+@RequiredArgsConstructor
+@SuppressWarnings({"rawtypes"})
 public class TrackInfoApiController {
 
-    @Autowired
-    private TrackInfoService trackInfoService;
-
-    @Autowired
-    private VodService vodService;
+    private final TrackInfoService trackInfoService;
+    private final VodService vodService;
 
     /**
      * 上传声音

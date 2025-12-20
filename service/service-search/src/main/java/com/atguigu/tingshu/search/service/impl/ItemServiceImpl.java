@@ -13,10 +13,10 @@ import com.atguigu.tingshu.user.client.UserInfoFeignClient;
 import com.atguigu.tingshu.user.client.UserListenProcessFeignClient;
 import com.atguigu.tingshu.vo.album.AlbumStatVo;
 import com.atguigu.tingshu.vo.user.UserInfoVo;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RBloomFilter;
 import org.redisson.api.RedissonClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -27,29 +27,16 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 @Slf4j
 @Service
-@SuppressWarnings({"unchecked", "rawtypes"})
+@RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
-    @Autowired
-    private AlbumInfoFeignClient albumInfoFeignClient;
-
-    @Autowired
-    private TrackInfoFeignClient trackInfoFeignClient;
-
-    @Autowired
-    private CategoryFeignClient categoryFeignClient;
-
-    @Autowired
-    private UserInfoFeignClient userInfoFeignClient;
-
-    @Autowired
-    private UserListenProcessFeignClient userListenProcessFeignClient;
-
-    @Autowired
-    private RedissonClient redissonClient;
-
-    @Autowired
-    private ThreadPoolExecutor threadPoolExecutor;
+    private final AlbumInfoFeignClient albumInfoFeignClient;
+    private final TrackInfoFeignClient trackInfoFeignClient;
+    private final CategoryFeignClient categoryFeignClient;
+    private final UserInfoFeignClient userInfoFeignClient;
+    private final UserListenProcessFeignClient userListenProcessFeignClient;
+    private final RedissonClient redissonClient;
+    private final ThreadPoolExecutor threadPoolExecutor;
 
     @Override
     public Map<String, Object> getItem(Long albumId) {
