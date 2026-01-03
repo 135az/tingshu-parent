@@ -10,8 +10,8 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,14 +23,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 搜索专辑管理控制器
+ *
+ * @author yanjiazheng
+ */
 @Tag(name = "搜索专辑管理")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("api/search/albumInfo")
 @SuppressWarnings({"unchecked", "rawtypes"})
 public class SearchApiController {
 
-    @Autowired
-    private SearchService searchService;
+    private final SearchService searchService;
 
     /**
      * 上架专辑

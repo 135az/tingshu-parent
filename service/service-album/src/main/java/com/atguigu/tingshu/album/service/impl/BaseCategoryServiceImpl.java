@@ -23,6 +23,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * BaseCategoryServiceImpl 实现类
+ *
+ * @author yan
+ */
 @Service
 @RequiredArgsConstructor
 public class BaseCategoryServiceImpl extends ServiceImpl<BaseCategory1Mapper, BaseCategory1> implements BaseCategoryService {

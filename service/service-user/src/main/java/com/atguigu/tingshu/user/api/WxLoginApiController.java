@@ -14,9 +14,9 @@ import com.atguigu.tingshu.vo.user.UserInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.error.WxErrorException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,23 +29,23 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 微信登录接口
+ *
+ * @author yanjiazheng
+ */
 @Tag(name = "微信授权登录接口")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/user/wxLogin")
+@SuppressWarnings({"unchecked", "rawtypes"})
 @Slf4j
 public class WxLoginApiController {
 
-    @Autowired
-    private UserInfoService userInfoService;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
-    private WxMaService wxMaService;
-
-    @Autowired
-    private KafkaService kafkaService;
+    private final UserInfoService userInfoService;
+    private final RedisTemplate redisTemplate;
+    private final WxMaService wxMaService;
+    private final KafkaService kafkaService;
 
     @Operation(summary = "小程序授权登录")
     @GetMapping("/wxLogin/{code}")

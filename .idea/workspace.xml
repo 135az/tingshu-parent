@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="refactor(album): 使用构造器注入替换字段注入&#10;&#10;- 将AlbumInfoServiceImpl中的@Autowired注解替换为构造器注入&#10;- 移除不必要的import语句并调整代码结构&#10;- 简化delete语句写法提高可读性&#10;- 统一使用final关键字修饰依赖项&#10;- 删除冗余的SuppressWarnings注解&#10;- 优化BaseCategoryServiceImpl注入方式&#10;- 优化TrackInfoServiceImpl注入方式&#10;- FileUploadServiceImpl中found变量声明优化">
+    <list default="true" id="a271840d-fb25-4606-b81b-5bb69b89eb91" name="Changes" comment="refactor(core): 使用构造器注入替换字段注入&#10;&#10;- 将多个服务实现类中的@Autowired注解替换为构造器注入&#10;- 统一使用final关键字修饰依赖项&#10;- 移除不必要的import语句并调整代码结构&#10;- 删除冗余的@SuppressWarnings注解&#10;- 优化部分代码写法提高可读性">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/RechargeInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/api/RechargeInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/RechargeInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/RechargeInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-account/src/main/java/com/atguigu/tingshu/account/service/impl/UserAccountServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/TrackInfoApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/TrackInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-order/src/main/java/com/atguigu/tingshu/order/service/impl/OrderInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/api/BaseCategoryApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-album/src/main/java/com/atguigu/tingshu/album/service/impl/BaseCategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/api/SearchApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-search/src/main/java/com/atguigu/tingshu/search/service/impl/SearchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/WxLoginApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/service-user/src/main/java/com/atguigu/tingshu/user/api/WxLoginApiController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +59,10 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -91,6 +91,7 @@
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
@@ -341,7 +342,10 @@
       <workItem from="1765435425442" duration="2169000" />
       <workItem from="1766025707519" duration="6111000" />
       <workItem from="1766211246446" duration="172000" />
-      <workItem from="1766211486255" duration="3077000" />
+      <workItem from="1766211486255" duration="3116000" />
+      <workItem from="1766718353869" duration="490000" />
+      <workItem from="1767429175997" duration="84000" />
+      <workItem from="1767429780663" duration="5087000" />
     </task>
     <task id="LOCAL-00001" summary="feat(album): 实现分类数据查询接口- 新增分类管理API控制器BaseCategoryApiController&#10;- 添加查询所有分类数据的REST接口getBaseCategoryList&#10;- 实现分类数据按层级结构组装逻辑&#10;- 集成Swagger注解优化接口文档&#10;- 在BaseCategoryService中定义分类查询方法- 通过BaseCategoryViewMapper查询完整分类视图数据&#10;- 使用Stream API对分类数据进行分组和映射处理- 返回封装后的多级分类JSON结构数据">
       <option name="closed" value="true" />
@@ -647,7 +651,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766047344744</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="refactor(core): 使用构造器注入替换字段注入&#10;&#10;- 将多个服务实现类中的@Autowired注解替换为构造器注入&#10;- 统一使用final关键字修饰依赖项&#10;- 移除不必要的import语句并调整代码结构&#10;- 删除冗余的@SuppressWarnings注解&#10;- 优化部分代码写法提高可读性">
+      <option name="closed" value="true" />
+      <created>1766216489501</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1766216489501</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +679,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="feat(search): 实现专辑上下架功能&#10;&#10;- 新增专辑索引仓库AlbumIndexRepository&#10;- 实现专辑上架接口，同步专辑、属性、分类及用户信息到ES&#10;- 实现专辑下架接口，从ES中删除专辑索引&#10;- 添加Feign客户端支持专辑、分类、用户信息远程调用&#10;- 完善专辑属性值查询接口及相关降级实现- 调整Nacos配置中心地址为192.168.200.130:8848" />
     <MESSAGE value="feat(search):优化专辑上架异步处理逻辑- 使用CompletableFuture异步编排获取专辑信息&#10;- 并行处理分类、属性及用户数据的远程调用-优化热度值计算逻辑，使用固定范围随机数- 调整播放量、订阅量等统计字段的生成策略&#10;- 完善多任务组合等待与索引数据保存流程" />
     <MESSAGE value="feat(album): 实现专辑上下架消息通知机制&#10;&#10;- 在专辑服务中引入 Kafka 服务支持- 专辑上架时发送 Kafka 上架消息- 专辑下架时发送 Kafka 下架消息- 新增 SearchReceiver 监听上下架消息并同步搜索服务&#10;- 实现批量上架接口用于触发专辑上架操作" />
     <MESSAGE value="feat(search): 实现专辑搜索功能&#10;&#10;- 新增根据关键词检索专辑的接口&#10;- 支持分类筛选和属性筛选&#10;- 支持多种排序方式（综合、播放量、发布时间）- 实现高亮显示匹配关键词&#10;- 添加分页查询支持&#10;- 构建 Elasticsearch 查询 DSL 语句&#10;- 解析搜索结果并封装返回数据&#10;- 集成 Swagger 注解优化接口文档" />
@@ -692,7 +703,8 @@
     <MESSAGE value="feat(account): 实现用户充值与消费记录功能&#10;- 新增充值信息API控制器，支持根据订单号查询充值信息&#10;- 实现用户充值提交接口，生成充值订单并返回订单号&#10;- 添加账户充值成功后的处理逻辑，更新账户余额与交易明细&#10;- 实现用户充值记录与消费记录的分页查询接口- 完善账户明细Mapper与Service层，支持按交易类型筛选记录&#10;-优化账户金额增加逻辑，确保操作幂等性与数据一致性&#10;- 配置Kafka监听器，处理充值支付成功的异步通知消息&#10;- 调整Nacos配置中心地址，统一服务注册与配置管理入口" />
     <MESSAGE value="feat(dispatch): 集成XXL-JOB实现定时任务调度&#10;&#10;- 配置XXL-JOB执行器参数，包括地址日、端口、- 添加志路径等XXL-JOB核心依赖模块到编译配置- 实现定时任务处理器DispatchJobHandler- 新增更新排行榜定时任务updateLatelyAlbumRankingJob&#10;- 新增更新VIP过期状态定时任务updateVipExpireStatusJob&#10;- 集成SearchFeignClient与UserInfoFeignClient调用远程服务- 添加定时任务日志记录功能，记录执行状态与耗时- 调整Nacos配置中心地址为192.168.200.130:8848- 配置项目编码与模块依赖关系&#10;- 添加XXL-JOB管理端与执行器启动配置" />
     <MESSAGE value="refactor(album): 使用构造器注入替换字段注入&#10;&#10;- 将AlbumInfoServiceImpl中的@Autowired注解替换为构造器注入&#10;- 移除不必要的import语句并调整代码结构&#10;- 简化delete语句写法提高可读性&#10;- 统一使用final关键字修饰依赖项&#10;- 删除冗余的SuppressWarnings注解&#10;- 优化BaseCategoryServiceImpl注入方式&#10;- 优化TrackInfoServiceImpl注入方式&#10;- FileUploadServiceImpl中found变量声明优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor(album): 使用构造器注入替换字段注入&#10;&#10;- 将AlbumInfoServiceImpl中的@Autowired注解替换为构造器注入&#10;- 移除不必要的import语句并调整代码结构&#10;- 简化delete语句写法提高可读性&#10;- 统一使用final关键字修饰依赖项&#10;- 删除冗余的SuppressWarnings注解&#10;- 优化BaseCategoryServiceImpl注入方式&#10;- 优化TrackInfoServiceImpl注入方式&#10;- FileUploadServiceImpl中found变量声明优化" />
+    <MESSAGE value="refactor(core): 使用构造器注入替换字段注入&#10;&#10;- 将多个服务实现类中的@Autowired注解替换为构造器注入&#10;- 统一使用final关键字修饰依赖项&#10;- 移除不必要的import语句并调整代码结构&#10;- 删除冗余的@SuppressWarnings注解&#10;- 优化部分代码写法提高可读性" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(core): 使用构造器注入替换字段注入&#10;&#10;- 将多个服务实现类中的@Autowired注解替换为构造器注入&#10;- 统一使用final关键字修饰依赖项&#10;- 移除不必要的import语句并调整代码结构&#10;- 删除冗余的@SuppressWarnings注解&#10;- 优化部分代码写法提高可读性" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

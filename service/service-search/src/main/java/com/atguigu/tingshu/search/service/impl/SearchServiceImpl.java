@@ -511,17 +511,12 @@ public class SearchServiceImpl implements SearchService {
             String[] split = order.split(":");
             //  判断这个数组
             if (null != split && split.length == 2) {
-                switch (split[0]) {
-                    case "1":
-                        orderField = "hotScore";
-                        break;
-                    case "2":
-                        orderField = "playStatNum";
-                        break;
-                    case "3":
-                        orderField = "createTime";
-                        break;
-                }
+                orderField = switch (split[0]) {
+                    case "1" -> "hotScore";
+                    case "2" -> "playStatNum";
+                    case "3" -> "createTime";
+                    default -> orderField;
+                };
                 sort = split[1];
             }
             //  判断 desc SortOrder.Desc  asc SortOrder.Asc
