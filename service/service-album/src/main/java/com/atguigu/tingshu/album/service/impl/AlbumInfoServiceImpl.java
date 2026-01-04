@@ -185,9 +185,8 @@ public class AlbumInfoServiceImpl extends ServiceImpl<AlbumInfoMapper, AlbumInfo
         // 根据id 修改专辑信息
         this.updateById(albumInfo);
         // 先删除专辑属性值
-        albumAttributeValueMapper.delete(
-                new LambdaQueryWrapper<AlbumAttributeValue>()
-                        .eq(AlbumAttributeValue::getAlbumId, id)
+        albumAttributeValueMapper.delete(new LambdaQueryWrapper<AlbumAttributeValue>()
+                .eq(AlbumAttributeValue::getAlbumId, id)
         );
         // 添加专辑属性值
         List<AlbumAttributeValueVo> albumAttributeValueVoList = albumInfoVo.getAlbumAttributeValueVoList();

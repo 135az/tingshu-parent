@@ -254,7 +254,7 @@ public class SearchServiceImpl implements SearchService {
         //  获取到三级分类Id 集合
         List<Long> idList = baseCategory3List.stream().map(BaseCategory3::getId).collect(Collectors.toList());
         //  将这个idList进行转换
-        List<FieldValue> valueList = idList.stream().map(id -> FieldValue.of(id)).collect(Collectors.toList());
+        List<FieldValue> valueList = idList.stream().map(FieldValue::of).collect(Collectors.toList());
         //  调用查询方法:
         SearchRequest.Builder request = new SearchRequest.Builder();
         request.index("albuminfo").query(q -> q.terms(
@@ -267,7 +267,7 @@ public class SearchServiceImpl implements SearchService {
                                         .sort(sort -> sort.field(
                                                 f -> f.field("hotScore").order(SortOrder.Desc))))));
         //  获取到查询结果集
-        SearchResponse<AlbumInfoIndex> searchResponse = null;
+        SearchResponse<AlbumInfoIndex> searchResponse;
         try {
             searchResponse = elasticsearchClient.search(request.build(), AlbumInfoIndex.class);
         } catch (IOException e) {
